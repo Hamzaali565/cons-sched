@@ -11,7 +11,7 @@ const initialState = {
   url:
     window.location.href.split(":")[0] === "http"
       ? `http://localhost:3001/api/v1`
-      : `https://ipd-server.vercel.app/api/v1`,
+      : `https://con-sched-server.vercel.app/api/v1`,
   toggle: null,
   response: [], // Add response to the initial state
   shift: [],
