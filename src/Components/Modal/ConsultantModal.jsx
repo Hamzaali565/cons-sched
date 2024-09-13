@@ -5,6 +5,7 @@ import Modal from "@mui/material/Modal";
 import SimpleInput from "../SimpleInput/SimpleInput";
 import axios, { all } from "axios";
 import { useSelector } from "react-redux";
+import Loader from "./Loader";
 
 const style = {
   position: "absolute",
@@ -24,12 +25,17 @@ export default function ConsultantModal({ onClick, title, All = "" }) {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState([]);
   const [toggle, setToggle] = useState(false);
+  const [loaderTog, setLoaderTog] = useState(false);
+  const [message, setMessage] = useState("");
   const inputRef = useRef(null); // Reference for the input element
 
   React.useEffect(() => {
     getData();
   }, [toggle]);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    setData([]);
+  };
 
   const url = useSelector((state) => state.url);
 
@@ -61,13 +67,17 @@ export default function ConsultantModal({ onClick, title, All = "" }) {
   // api
   const getData = async () => {
     try {
+      setLoaderTog(true);
+      setMessage("");
       const response = await axios.get(`${url}/getconsultant?All=${All}`, {
         withCredentials: true,
       });
       console.log(response.data.data);
+      setLoaderTog(false);
       setData(response.data.data);
     } catch (error) {
       console.log("error of get data", error);
+      setLoaderTog(false);
     }
   };
   useEffect(() => {
@@ -126,7 +136,13 @@ export default function ConsultantModal({ onClick, title, All = "" }) {
                 </div>
               ))
             ) : (
-              <div className="flex justify-center">NO Data Loaded...</div>
+              <div className="flex justify-center">
+                {" "}
+                <div className="flex justify-center">
+                  {message !== "" && <p>{message !== "" ? message : ""}</p>}
+                  <Loader onClick={loaderTog} title={"Please Wait"} />
+                </div>
+              </div>
             )}
           </div>
         </Box>

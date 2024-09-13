@@ -5,6 +5,7 @@ import Modal from "@mui/material/Modal";
 import SimpleInput from "../SimpleInput/SimpleInput";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import Loader from "./Loader";
 
 const style = {
   position: "absolute",
@@ -24,12 +25,17 @@ export default function SpecialityModal({ onClick, title }) {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState([]);
   const [toggle, setToggle] = useState(false);
+  const [loaderTog, setLoaderTog] = useState(false);
+  const [message, setMessage] = useState("");
   const inputRef = useRef(null); // Reference for the input element
 
   React.useEffect(() => {
     getData();
   }, [toggle]);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    setData([]);
+  };
 
   const OpenData = () => {
     setToggle(!toggle);
@@ -56,10 +62,15 @@ export default function SpecialityModal({ onClick, title }) {
   };
   const getData = async () => {
     try {
+      setMessage("");
+      setLoaderTog(true);
       const response = await axios.get(`${url}/speciality`);
       setData(response?.data?.data);
+      setLoaderTog(false);
     } catch (error) {
       console.log("error of getData", error);
+      setLoaderTog(false);
+      setMessage("Please Reload Page and try again");
     }
   };
   const SendData = (item) => {
@@ -89,10 +100,9 @@ export default function SpecialityModal({ onClick, title }) {
             />
           </div>
           <div className="container mx-auto mt-3">
-            <div className="grid grid-cols-3 text-xs justify-items-center items-center h-16 border border-gray-300">
+            <div className="grid grid-cols-2 text-xs justify-items-center items-center h-16 border border-gray-300">
               <p className="">Serial No.</p>
               <p className="">Speciality Name</p>
-              <p className="">Created User</p>
             </div>
           </div>
 
@@ -104,15 +114,17 @@ export default function SpecialityModal({ onClick, title }) {
                   key={index}
                   onClick={() => SendData(item)}
                 >
-                  <div className="grid grid-cols-3 text-xs justify-items-center items-center h-10 border border-gray-300">
+                  <div className="grid grid-cols-2 text-xs justify-items-center items-center h-10 border border-gray-300">
                     <p className="">{index + 1}</p>
                     <p className="">{item?.speciality}</p>
-                    <p className="">{item?.createdUser}</p>
                   </div>
                 </div>
               ))
             ) : (
-              <div className="flex justify-center">NO Data Loaded...</div>
+              <div className="flex justify-center">
+                {message !== "" && <p>{message !== "" ? message : ""}</p>}
+                <Loader onClick={loaderTog} title={"Please Wait"} />
+              </div>
             )}
           </div>
         </Box>
