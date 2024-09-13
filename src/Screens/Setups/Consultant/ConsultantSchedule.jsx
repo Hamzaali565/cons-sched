@@ -89,9 +89,41 @@ const ConsultantSchedule = () => {
       const response = await axios.get(`${url}/getconsultant?All=""`, {
         withCredentials: true,
       });
+      let data = response.data.data;
+      const grouped = data.reduce((acc, curr) => {
+        // Find if the group already exists for the speciality
+        let group = acc.find(
+          (group) => group[0]?.speciality === curr.speciality
+        );
+
+        // If group exists, push the current element into it
+        if (group) {
+          group.push(curr);
+        } else {
+          // If no group exists, create a new group
+          acc.push([curr]);
+        }
+
+        return acc;
+      }, []);
+
+      // Sort by speciality alphabetically
+      const sortedGrouped = grouped.sort((a, b) =>
+        a[0].speciality.localeCompare(b[0].speciality)
+      );
+
+      console.log("sortedGrouped", sortedGrouped);
+      let mydata = grouped.map((items) => {
+        if (items.length > 0) {
+          let Data = items?.map((itemed) => {
+            console.log("itemed ", itemed);
+          });
+        }
+      });
+      // console.log("Data", sortedGrouped);
       console.log(response.data.data);
       setOpen(false);
-      printResultToPdf(response.data.data);
+      printResultToPdf(grouped);
     } catch (error) {
       setOpen(false);
       console.log("error of get data", error);
@@ -132,20 +164,24 @@ const ConsultantSchedule = () => {
           )}
         </div>
         <div className="container mx-auto mt-3">
-          <div className="mt-3 grid grid-cols-5 text-xs font-bold justify-items-center items-center h-16 border border-gray-300">
+          <div className="mt-3 grid grid-cols-7 text-xs font-bold justify-items-center items-center h-16 border border-gray-300">
             <p>Consultant Name</p>
             <p>Speciality</p>
             <p>Timing</p>
             <p>Days</p>
+            <p>Appointment Fee</p>
+            <p>Welfare Fee</p>
             <p>onleave</p>
           </div>
           {consData &&
             consData.map((items, index) => (
-              <div className="mt-3 grid grid-cols-5 text-xs justify-items-center items-center h-10 border border-gray-300">
+              <div className="mt-3 grid grid-cols-7 text-xs justify-items-center items-center h-10 border border-gray-300">
                 <p>{items?.name}</p>
                 <p>{items?.speciality}</p>
                 <p>{items?.timing}</p>
                 <p>{items?.days}</p>
+                <p>{items?.appointmentFee}</p>
+                <p>{items?.welfareFee}</p>
                 <p>{items?.onLeave === true ? "On-Leave" : "Available"}</p>
               </div>
             ))}
@@ -158,6 +194,19 @@ const ConsultantSchedule = () => {
           <ButtonDis title={"Print Detail"} onClick={getData} />
           <ButtonDis title={"Refereh"} onClick={resetData} />
         </div>
+        <table
+          style={{ border: "1px solid black", borderCollapse: "collapse" }}
+        >
+          <tr>
+            <td rowSpan="2" style={{ border: "1px solid black" }}>
+              Rowspan 2
+            </td>
+            <td style={{ border: "1px solid black" }}>Column 1</td>
+          </tr>
+          <tr>
+            <td style={{ border: "1px solid black" }}>Column 2 Row 2</td>
+          </tr>
+        </table>
       </div>
       <Loader onClick={open} />
     </div>

@@ -63,8 +63,73 @@ Font.register({
 // });
 
 // Reusable Page Component with Page Break Functionality
-const ConsScheduleDetailPdf = ({ resultData }) => {
+const ConsScheduleDetailPdf = ({ resultData, itemsPerRow = 2 }) => {
+  const itemWidth = `${100 / itemsPerRow}%`;
   const content = [{ text: "hello" }];
+
+  const TableCell = ({
+    consName,
+    day1,
+    time1,
+    day2,
+    time2,
+    day3,
+    time3,
+    speciality,
+    data,
+  }) => (
+    <View style={{ padding: 2 }}>
+      <View
+        style={{
+          border: "1px solid gray",
+          marginTop: 6,
+          paddingBottom: 2,
+        }}
+      >
+        <Text
+          style={{
+            textDecoration: "underline",
+            fontFamily: "Kalam",
+            fontWeight: "bold", // Use "bold" instead of "ultrabold"
+            fontSize: 15,
+            textAlign: "center",
+            color: "white",
+            backgroundColor: "#454545",
+          }}
+        >
+          {speciality}
+        </Text>
+        {data?.map((itemes) => (
+          <View style={{ border: "1px solid black", fontSize: 10, padding: 2 }}>
+            <Text
+              style={{
+                border: "1px solid black",
+                textAlign: "center",
+                padding: 1,
+                fontSize: 8,
+                color: "white",
+                backgroundColor: "#454545",
+              }}
+            >
+              {itemes?.name}
+            </Text>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+              }}
+            >
+              <Text style={styles.tableDataSt}>MON - FRI 10pm - 10pm</Text>
+              <Text style={styles.tableDataSt}>
+                MON - FRI - SAT 10pm - 10pm
+              </Text>
+              <Text style={styles.tableDataSt}>MON - FRI 10pm - 10pm</Text>
+            </View>
+          </View>
+        ))}
+      </View>
+    </View>
+  );
 
   const pageHeightLimit = 600; // Adjust this based on your requirements
   let currentHeight = 0;
@@ -83,52 +148,18 @@ const ConsScheduleDetailPdf = ({ resultData }) => {
           <Page style={styles.page} key={`page-${pages.length}`}>
             <Header />
 
-            <View style={styles.content}>{currentPageContent}</View>
+            <View>{currentPageContent}</View>
           </Page>
         );
 
         // Start a new page
         currentPageContent = [
-          <View
-            key={index}
-            style={{ border: "1px solid gray", marginTop: 6, paddingBottom: 2 }}
-          >
-            <Text
-              style={{
-                textDecoration: "underline",
-                fontFamily: "Kalam",
-                fontWeight: "bold", // Use "bold" instead of "ultrabold"
-                fontSize: 15,
-                textAlign: "center",
-                color: "white",
-                backgroundColor: "#454545",
-              }}
-            >
-              testName
-            </Text>
-          </View>,
+          <TableCell data={item} speciality={item[0].speciality} />,
         ];
         currentHeight = itemHeight;
       } else {
         currentPageContent.push(
-          <View
-            key={index}
-            style={{ border: "1px solid gray", marginTop: 6, paddingBottom: 2 }}
-          >
-            <Text
-              style={{
-                textDecoration: "underline",
-                fontFamily: "Kalam",
-                fontWeight: "bold", // Use "bold" instead of "ultrabold"
-                fontSize: 15,
-                textAlign: "center",
-                color: "white",
-                backgroundColor: "#454545",
-              }}
-            >
-              testName
-            </Text>
-          </View>
+          <TableCell data={item} speciality={item[0].speciality} />
         );
         currentHeight += itemHeight;
       }
@@ -140,7 +171,7 @@ const ConsScheduleDetailPdf = ({ resultData }) => {
         <Page style={styles.page} key={`page-${pages.length}`}>
           <Header />
 
-          <View style={styles.content}>{currentPageContent}</View>
+          <View style={{}}>{currentPageContent}</View>
         </Page>
       );
     }
@@ -164,7 +195,16 @@ const Header = () => (
     <View style={styles.logoContainer}>
       <Image src={logo} style={styles.Image} />
     </View>
-    <Text style={styles.labReport}>Consultant Scehdule</Text>
+    <View
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <Text style={{ fontSize: 10 }}>Consultant Weekly Scehdule</Text>
+      <Text style={{ fontSize: 10 }}>021 3878 4012-16</Text>
+    </View>
   </View>
 );
 
@@ -177,7 +217,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   Image: {
-    height: "50",
+    height: "40",
     marginTop: "3",
     width: "300",
   },
@@ -303,6 +343,28 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flexDirection: "row",
     marginBottom: 10,
+  },
+  table: {
+    display: "flex",
+    width: "100%",
+  },
+  tableRow: {
+    display: "flex",
+    flexDirection: "row",
+  },
+  tableCell: {
+    border: "1px solid black",
+    padding: 5,
+    flex: 1,
+  },
+  tableDataSt: {
+    border: "1px solid black",
+    padding: 2,
+    fontSize: 7,
+    marginRight: 0,
+    textAlign: "center",
+    marginLeft: 0,
+    flex: 1,
   },
 });
 export default ConsScheduleDetailPdf;

@@ -24,6 +24,8 @@ const Consultant = () => {
   const [specialityId, setSpecialityId] = useState("");
   const [updateSpeciality, setUpdateSpeciality] = useState(null);
   const [days, setDays] = useState("");
+  const [days1, setDays1] = useState("");
+  const [days2, setDays2] = useState("");
   const [timing, setTiming] = useState("");
   const [timing1, setTiming1] = useState("");
   const [timing2, setTiming2] = useState("");
@@ -31,6 +33,9 @@ const Consultant = () => {
   const [roomNo, setRoomNo] = useState("");
   const [onLeave, setOnLeave] = useState(false);
   const [remarks, setRemarks] = useState("");
+  const [appointmentFee, setAppointmentFee] = useState(0);
+  const [welfareFee, setWelfareFee] = useState(0);
+  const [consultantShare, setConsultantShare] = useState(0);
 
   const url = useSelector((item) => item.url);
 
@@ -49,10 +54,15 @@ const Consultant = () => {
     setTiming1("");
     setTiming2("");
     setDays("");
+    setDays1("");
+    setDays2("");
     setRoomNo("");
     setQualification("");
     setOnLeave(false);
     setRemarks("");
+    setAppointmentFee(0);
+    setWelfareFee(0);
+    setConsultantShare(0);
   };
 
   const updateDetails = (data) => {
@@ -67,6 +77,8 @@ const Consultant = () => {
     setPhone(data?.phone);
     setStatus(data?.status);
     setDays(data?.days);
+    setDays1(data?.days1);
+    setDays2(data?.days2);
     setTiming(data?.timing);
     setTiming1(data?.timing1);
     setTiming2(data?.timing2);
@@ -74,6 +86,9 @@ const Consultant = () => {
     setRoomNo(data?.roomNo);
     setOnLeave(data?.onLeave);
     setRemarks(data?.remarks);
+    setAppointmentFee(data?.appointmentFee);
+    setWelfareFee(data?.welfareFee);
+    setConsultantShare(data?.consultantShare);
   };
 
   const submitData = async () => {
@@ -92,14 +107,20 @@ const Consultant = () => {
           cnic,
           phone,
           status,
-          days,
           timing,
           timing1,
+          days,
+          days1,
+          days2,
           timing2,
           qualification,
           roomNo,
           onLeave,
           remarks,
+          consultantShare,
+          appointmentFee,
+          welfareFee,
+
           _id: (details && details?._id) || "",
         },
         { withCredentials: true }
@@ -226,25 +247,37 @@ const Consultant = () => {
           onChange={(e) => setStatus(e.target.checked)}
         />
         <LabeledInput
-          label={"Days"}
+          label={"Day 1 "}
           placeholder={"MON - TUES - WED"}
           value={days ? days : ""}
           onChange={(e) => setDays(e.target.value.toUpperCase())}
         />
         <LabeledInput
-          label={"Timing1"}
+          label={"Day 2"}
+          placeholder={"MON - TUES - WED"}
+          value={days1 ? days1 : ""}
+          onChange={(e) => setDays1(e.target.value.toUpperCase())}
+        />
+        <LabeledInput
+          label={"Day 3"}
+          placeholder={"MON - TUES - WED"}
+          value={days2 ? days2 : ""}
+          onChange={(e) => setDays2(e.target.value.toUpperCase())}
+        />
+        <LabeledInput
+          label={"Timing of Day 1"}
           onChange={(e) => setTiming(e.target.value.toUpperCase())}
           value={timing ? timing : ""}
           placeholder={"12pm - 2pm"}
         />
         <LabeledInput
-          label={"Timing2"}
+          label={"Timing of Day 2"}
           onChange={(e) => setTiming1(e.target.value.toUpperCase())}
           value={timing1 ? timing1 : ""}
           placeholder={"4pm - 6pm"}
         />
         <LabeledInput
-          label={"Timing3"}
+          label={"Timing of Day 3 "}
           onChange={(e) => setTiming2(e.target.value.toUpperCase())}
           value={timing2 ? timing2 : ""}
           placeholder={"8pm - 10pm"}
@@ -265,13 +298,32 @@ const Consultant = () => {
           label={"Remarks"}
           onChange={(e) => setRemarks(e.target.value.toUpperCase())}
           value={remarks ? remarks : ""}
-          placeholder={"OPD 6-A FIRST FLOOR"}
+          placeholder={"Remarks"}
         />
         <LabeledInput
           label={"OnLeave"}
           type={"checkbox"}
           checked={onLeave}
           onChange={(e) => setOnLeave(e.target.checked)}
+        />
+        <LabeledInput
+          label={"Appointment Fee"}
+          onChange={(e) => setAppointmentFee(e.target.value)}
+          value={appointmentFee ? appointmentFee : ""}
+          type={"Number"}
+          placeholder={"1200"}
+        />
+        <LabeledInput
+          label={"Welfare Fee"}
+          onChange={(e) => setWelfareFee(e.target.value)}
+          value={welfareFee ? welfareFee : ""}
+          placeholder={"700"}
+        />
+        <LabeledInput
+          label={"Consultant Share"}
+          onChange={(e) => setConsultantShare(e.target.value)}
+          value={consultantShare ? consultantShare : ""}
+          placeholder={"70"}
         />
       </div>
       <div className="flex flex-col mt-4 items-center space-y-2 md:flex-row md:justify-center md:space-y-0 md:space-x-2">

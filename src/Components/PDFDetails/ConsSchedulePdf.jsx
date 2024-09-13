@@ -88,15 +88,28 @@ const ConSchedulePDF = ({ consDetails }) => {
                   {items?.name}
                 </Text>
                 <Text style={styles.text}>{items?.qualification}</Text>
-                <Text style={styles.text}>{items?.timing}</Text>
+                <Text style={styles.text}>
+                  {items?.days} {items?.timing}
+                </Text>
                 {items?.timing1 && (
-                  <Text style={styles.text}>{items?.timing1}</Text>
+                  <Text style={styles.text}>
+                    {items?.days1} {items?.timing1}
+                  </Text>
                 )}
                 {items?.timing2 && (
-                  <Text style={styles.text}>{items?.timing2}</Text>
+                  <Text style={styles.text}>
+                    {items?.days2} {items?.timing2}
+                  </Text>
                 )}
+                <Text
+                  style={[
+                    styles.text,
+                    { fontFamily: "Roboto", fontWeight: "bold", fontSize: 10 },
+                  ]}
+                >
+                  Fees: {items?.appointmentFee}
+                </Text>
                 <Text style={styles.text}>{items?.roomNo}</Text>
-                <Text style={styles.text}>{items?.days}</Text>
                 <Text style={styles.saperator}>
                   ____________________________________________________________
                 </Text>
