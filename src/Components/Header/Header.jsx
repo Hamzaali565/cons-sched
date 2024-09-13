@@ -32,7 +32,7 @@ const Header = () => {
       if (result.isConfirmed) {
         const userInput = result.value;
         console.log("User input:", userInput);
-        if (userInput === "kHAN@1215") {
+        if (userInput === "1234554321") {
           // Now you can use `userInput` in your logic
           navigate("/consultantSetup"); // Directly passing the path
           return;

@@ -189,24 +189,13 @@ const ConsultantSchedule = () => {
         <div className="flex justify-center mt-5 space-x-3">
           <ButtonDis
             title={"Print Selected Data"}
+            disabled={consData.length === 0 ? true : false}
+            style={consData.length > 0 ? "bg-blue-500" : ""}
             onClick={ConScheduleThermPrint}
           />
           <ButtonDis title={"Print Detail"} onClick={getData} />
           <ButtonDis title={"Refereh"} onClick={resetData} />
         </div>
-        <table
-          style={{ border: "1px solid black", borderCollapse: "collapse" }}
-        >
-          <tr>
-            <td rowSpan="2" style={{ border: "1px solid black" }}>
-              Rowspan 2
-            </td>
-            <td style={{ border: "1px solid black" }}>Column 1</td>
-          </tr>
-          <tr>
-            <td style={{ border: "1px solid black" }}>Column 2 Row 2</td>
-          </tr>
-        </table>
       </div>
       <Loader onClick={open} />
     </div>
