@@ -37,6 +37,7 @@ export default function SpecialityModal({ onClick, title }) {
   };
 
   const url = useSelector((state) => state.url);
+  console.log("URL ", url);
 
   const filterNames = (input) => {
     const searchTerm = input.toLowerCase();
