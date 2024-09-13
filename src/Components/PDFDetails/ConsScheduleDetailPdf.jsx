@@ -202,7 +202,7 @@ const Header = () => (
         alignItems: "center",
       }}
     >
-      <Text style={{ fontSize: 10 }}>Consultant Weekly Scehdule</Text>
+      <Text style={{ fontSize: 10 }}>Consultant Weekly Schedule</Text>
       <Text style={{ fontSize: 10 }}>021 3878 4012-16</Text>
     </View>
   </View>
