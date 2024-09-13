@@ -67,17 +67,7 @@ const ConsScheduleDetailPdf = ({ resultData, itemsPerRow = 2 }) => {
   const itemWidth = `${100 / itemsPerRow}%`;
   const content = [{ text: "hello" }];
 
-  const TableCell = ({
-    consName,
-    day1,
-    time1,
-    day2,
-    time2,
-    day3,
-    time3,
-    speciality,
-    data,
-  }) => (
+  const TableCell = ({ speciality, data }) => (
     <View style={{ padding: 2 }}>
       <View
         style={{
@@ -119,11 +109,20 @@ const ConsScheduleDetailPdf = ({ resultData, itemsPerRow = 2 }) => {
                 justifyContent: "space-between",
               }}
             >
-              <Text style={styles.tableDataSt}>MON - FRI 10pm - 10pm</Text>
               <Text style={styles.tableDataSt}>
-                MON - FRI - SAT 10pm - 10pm
+                {itemes?.days} {itemes?.timing}
               </Text>
-              <Text style={styles.tableDataSt}>MON - FRI 10pm - 10pm</Text>
+
+              {itemes?.days1 && (
+                <Text style={styles.tableDataSt}>
+                  {itemes?.days1 ? `${itemes?.days1} ${itemes?.timing1}` : "-"}
+                </Text>
+              )}
+              {itemes?.days2 && (
+                <Text style={styles.tableDataSt}>
+                  {itemes?.days2 ? `${itemes?.days2} ${itemes?.timing2}` : "-"}
+                </Text>
+              )}
             </View>
           </View>
         ))}

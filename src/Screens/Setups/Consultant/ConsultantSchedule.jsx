@@ -187,7 +187,7 @@ const ConsultantSchedule = () => {
           <ButtonDis
             title={"Print Selected Data"}
             disabled={consData.length === 0 ? true : false}
-            style={consData.length > 0 ? "bg-blue-500" : ""}
+            style={consData.length > 0 ? "bg-blue-600" : ""}
             onClick={ConScheduleThermPrint}
           />
           <ButtonDis title={"Print Detail"} onClick={getData} />
