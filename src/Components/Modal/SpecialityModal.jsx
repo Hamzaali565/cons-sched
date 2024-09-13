@@ -56,9 +56,7 @@ export default function SpecialityModal({ onClick, title }) {
   };
   const getData = async () => {
     try {
-      const response = await axios.get(`${url}/speciality`, {
-        withCredentials: true,
-      });
+      const response = await axios.get(`${url}/speciality`);
       setData(response?.data?.data);
     } catch (error) {
       console.log("error of getData", error);

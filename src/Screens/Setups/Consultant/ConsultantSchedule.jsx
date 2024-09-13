@@ -42,8 +42,7 @@ const ConsultantSchedule = () => {
       setSpecialityData(data);
       setSelectedType("");
       const response = await axios.get(
-        `${url}/opd/consultantSchedule?speciality=${data?.speciality}&specialityId=${data?._id}`,
-        { withCredentials: true }
+        `${url}/opd/consultantSchedule?speciality=${data?.speciality}&specialityId=${data?._id}`
       );
       console.log("Response of getDataFromSpeciality", response);
       setConsData(response?.data?.data?.data);
@@ -86,9 +85,7 @@ const ConsultantSchedule = () => {
   const getData = async () => {
     setOpen(true);
     try {
-      const response = await axios.get(`${url}/getconsultant?All=""`, {
-        withCredentials: true,
-      });
+      const response = await axios.get(`${url}/getconsultant?All=""`);
       let data = response.data.data;
       const grouped = data.reduce((acc, curr) => {
         // Find if the group already exists for the speciality

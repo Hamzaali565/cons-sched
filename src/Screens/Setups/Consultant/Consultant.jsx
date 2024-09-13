@@ -94,37 +94,33 @@ const Consultant = () => {
   const submitData = async () => {
     try {
       setOpen(true);
-      const response = await axios.post(
-        `${url}/adddoctor`,
-        {
-          name,
-          speciality:
-            (specialityData && specialityData?.speciality) || speciality,
-          specialityId: (specialityData && specialityData?._id) || specialityId,
-          pmdc,
-          address,
-          email,
-          cnic,
-          phone,
-          status,
-          timing,
-          timing1,
-          days,
-          days1,
-          days2,
-          timing2,
-          qualification,
-          roomNo,
-          onLeave,
-          remarks,
-          consultantShare,
-          appointmentFee,
-          welfareFee,
+      const response = await axios.post(`${url}/adddoctor`, {
+        name,
+        speciality:
+          (specialityData && specialityData?.speciality) || speciality,
+        specialityId: (specialityData && specialityData?._id) || specialityId,
+        pmdc,
+        address,
+        email,
+        cnic,
+        phone,
+        status,
+        timing,
+        timing1,
+        days,
+        days1,
+        days2,
+        timing2,
+        qualification,
+        roomNo,
+        onLeave,
+        remarks,
+        consultantShare,
+        appointmentFee,
+        welfareFee,
 
-          _id: (details && details?._id) || "",
-        },
-        { withCredentials: true }
-      );
+        _id: (details && details?._id) || "",
+      });
       setOpen(false);
       if (response?.data?.message === "created") {
         SuccessAlert({ text: "DOCTOR CREATED SUCCESSFULLY !!!", timer: 2000 });
@@ -143,15 +139,11 @@ const Consultant = () => {
   const submitSpeciality = async () => {
     try {
       setOpen(true);
-      const response = await axios.post(
-        `${url}/specialty`,
-        {
-          speciality:
-            (updateSpeciality && updateSpeciality?.speciality) || speciality,
-          _id: (updateSpeciality && updateSpeciality?._id) || "",
-        },
-        { withCredentials: true }
-      );
+      const response = await axios.post(`${url}/specialty`, {
+        speciality:
+          (updateSpeciality && updateSpeciality?.speciality) || speciality,
+        _id: (updateSpeciality && updateSpeciality?._id) || "",
+      });
 
       setSpeciality("");
       setUpdateSpeciality(null);
