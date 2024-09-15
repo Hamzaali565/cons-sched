@@ -94,7 +94,7 @@ const ConsultantSchedule = () => {
   const getData = async () => {
     setOpen(true);
     try {
-      const response = await axios.get(`${url}/getconsultant?All=""`);
+      const response = await axios.get(`${url}/getconsultant`);
       let data = response.data.data;
       const grouped = data.reduce((acc, curr) => {
         // Find if the group already exists for the speciality
