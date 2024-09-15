@@ -8,6 +8,7 @@ import {
 import Consultant from "./Screens/Setups/Consultant/Consultant";
 import ConsultantSchedule from "./Screens/Setups/Consultant/ConsultantSchedule";
 import Header from "./Components/Header/Header";
+import ConsDisp from "./Components/ConsultantDisp/ConsDisp";
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
         </Routes>
       </div>
     </Router>
+    // <>
+    //   {/* <ConsDisp /> */}
+    // </>
   );
 }
 

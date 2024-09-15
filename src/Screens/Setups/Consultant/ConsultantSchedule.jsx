@@ -11,6 +11,7 @@ import { v4 as uuidv4 } from "uuid";
 import ButtonDis from "../../../Components/Button/ButtonDis";
 import ConSchedulePDF from "../../../Components/PDFDetails/ConsSchedulePdf";
 import ConsScheduleDetailPdf from "../../../Components/PDFDetails/ConsScheduleDetailPdf";
+import ConsDisp from "../../../Components/ConsultantDisp/ConsDisp";
 
 const ConsultantSchedule = () => {
   const [consData, setConsData] = useState([]);
@@ -59,13 +60,21 @@ const ConsultantSchedule = () => {
 
     // Create a PDF document as a Blob
     const blob = await pdf(
-      <ConSchedulePDF key={key} consDetails={consData} />
+      <ConSchedulePDF
+        key={key}
+        consDetails={consData.length > 0 ? consData : data}
+      />
     ).toBlob();
 
     // Create a Blob URL and open it in a new tab
     let url = URL.createObjectURL(blob);
     window.open(url, "_blank");
     url = "";
+  };
+
+  const printCons = (item) => {
+    console.log(item);
+    ConScheduleThermPrint([item]);
   };
 
   const printResultToPdf = async (data) => {
@@ -126,6 +135,7 @@ const ConsultantSchedule = () => {
       console.log("error of get data", error);
     }
   };
+
   return (
     <div>
       <div className="bg-white bg-opacity-10 backdrop-blur-lg border border-white border-opacity-30 shadow-lg my-4 mx-4  p-3 rounded-3xl">
@@ -135,54 +145,42 @@ const ConsultantSchedule = () => {
             title={"Search With Speciality"}
             onClick={getDataFromSpeciality}
           />
-          <ConsultantModal
-            title={"Search With Consultant"}
-            onClick={(data) => updateCons(data, "Cons")}
-          />
           {consData.length > 0 && (
             <LabeledInput
-              label={
-                selectType === "Cons"
-                  ? "Selected Consultant"
-                  : "Selected Speciality"
-              }
+              label={"Selected Speciality"}
               disabled={true}
-              value={
-                selectType === "Cons"
-                  ? consData[0]?.name
-                  : specialityData?.speciality
-              }
-              placeholder={
-                selectType === "Cons"
-                  ? "Selected Consultant"
-                  : "Selected Speciality"
-              }
+              value={specialityData?.speciality}
+              placeholder={"Selected Speciality"}
             />
           )}
         </div>
-        <div className="container mx-auto mt-3">
-          <div className="mt-3 grid grid-cols-7 text-xs font-bold justify-items-center items-center h-16 border border-gray-300">
-            <p>Consultant Name</p>
-            <p>Speciality</p>
-            <p>Timing</p>
-            <p>Days</p>
-            <p>Appointment Fee</p>
-            <p>Welfare Fee</p>
-            <p>onleave</p>
+        {consData.length > 0 && (
+          <div className="container mx-auto mt-3">
+            <div className="mt-3 grid grid-cols-7 text-xs font-bold justify-items-center items-center h-16 border border-gray-300">
+              <p>Consultant Name</p>
+              <p>Speciality</p>
+              <p>Timing</p>
+              <p>Days</p>
+              <p>Appointment Fee</p>
+              <p>Welfare Fee</p>
+              <p>onleave</p>
+            </div>
+            {consData &&
+              consData.map((items, index) => (
+                <div className="mt-3 grid grid-cols-7 text-xs justify-items-center items-center h-10 border border-gray-300">
+                  <p>{items?.name}</p>
+                  <p>{items?.speciality}</p>
+                  <p>{items?.timing}</p>
+                  <p>{items?.days}</p>
+                  <p>{items?.appointmentFee}</p>
+                  <p>{items?.welfareFee}</p>
+                  <p>{items?.onLeave === true ? "On-Leave" : "Available"}</p>
+                </div>
+              ))}
           </div>
-          {consData &&
-            consData.map((items, index) => (
-              <div className="mt-3 grid grid-cols-7 text-xs justify-items-center items-center h-10 border border-gray-300">
-                <p>{items?.name}</p>
-                <p>{items?.speciality}</p>
-                <p>{items?.timing}</p>
-                <p>{items?.days}</p>
-                <p>{items?.appointmentFee}</p>
-                <p>{items?.welfareFee}</p>
-                <p>{items?.onLeave === true ? "On-Leave" : "Available"}</p>
-              </div>
-            ))}
-        </div>
+        )}
+        {consData.length <= 0 && <ConsDisp onClick={printCons} />}
+
         <div className="flex justify-center mt-5 space-x-3">
           <ButtonDis
             title={"Print Selected Data"}
