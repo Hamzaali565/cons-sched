@@ -110,6 +110,14 @@ const ConSchedulePDF = ({ consDetails }) => {
                   Fees: {items?.appointmentFee}
                 </Text>
                 <Text style={styles.text}>{items?.roomNo}</Text>
+                <Text
+                  style={[
+                    styles.text,
+                    { fontFamily: "Roboto", fontWeight: "bold" },
+                  ]}
+                >
+                  Status: {items?.onLeave === true ? "On-Leave" : "Available"}
+                </Text>
                 <Text style={styles.saperator}>
                   ____________________________________________________________
                 </Text>
@@ -199,6 +207,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     padding: 2,
     marginTop: 4,
+    fontSize: 14,
   },
   detailshead: {
     border: "1px solid black",
