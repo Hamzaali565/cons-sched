@@ -13,6 +13,7 @@ import ConSchedulePDF from "../../../Components/PDFDetails/ConsSchedulePdf";
 import ConsScheduleDetailPdf from "../../../Components/PDFDetails/ConsScheduleDetailPdf";
 import ConsDisp from "../../../Components/ConsultantDisp/ConsDisp";
 import Header from "../../../Components/Header/Header";
+import PracticePageBreakintotwo from "../../../Components/PDFDetails/PracticePageBreakintotwo";
 
 const ConsultantSchedule = () => {
   const [consData, setConsData] = useState([]);
@@ -92,6 +93,17 @@ const ConsultantSchedule = () => {
     window.open(url, "_blank");
     url = "";
   };
+  const printResultToPdfPrac = async (data) => {
+    const key = uuidv4();
+
+    // Create a PDF document as a Blob
+    const blob = await pdf(<PracticePageBreakintotwo data={data} />).toBlob();
+
+    // Create a Blob URL and open it in a new tab
+    let url = URL.createObjectURL(blob);
+    window.open(url, "_blank");
+    url = "";
+  };
 
   const getData = async () => {
     setOpen(true);
@@ -131,7 +143,7 @@ const ConsultantSchedule = () => {
       // console.log("Data", sortedGrouped);
       console.log(response.data.data);
       setOpen(false);
-      printResultToPdf(grouped);
+      printResultToPdfPrac(grouped);
     } catch (error) {
       setOpen(false);
       console.log("error of get data", error);
