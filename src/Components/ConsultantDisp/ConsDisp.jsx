@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SimpleInput from "../SimpleInput/SimpleInput";
 import CenterHeading from "../Center Heading/CenterHeading";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import Loader from "../Modal/Loader";
+import Header from "../Header/Header";
 
-const ConsDisp = ({ All = "", onClick }) => {
+const ConsDisp = ({ All = "", onClickCons, onClickSpec, value }) => {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState([]);
   const [toggle, setToggle] = useState(false);
@@ -17,7 +18,15 @@ const ConsDisp = ({ All = "", onClick }) => {
   React.useEffect(() => {
     getData();
   }, [toggle]);
-
+  console.log("value", value);
+  useEffect(() => {
+    // If `value` is an empty string, fetch original data; otherwise, filter data
+    if (value === "") {
+      getData(); // Fetch all data when value is empty
+    } else {
+      filterNames(value); // Filter data when value is not empty
+    }
+  }, [value]);
   const getData = async () => {
     try {
       setLoaderTog(true);
@@ -25,7 +34,17 @@ const ConsDisp = ({ All = "", onClick }) => {
       const response = await axios.get(`${url}/getconsultant?All=${All}`, {
         withCredentials: true,
       });
-      console.log(response.data.data);
+      response?.data?.data.sort((a, b) => {
+        let nameA = a.speciality.toLowerCase();
+        let nameB = b.speciality.toLowerCase();
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        return 0;
+      });
       setLoaderTog(false);
       setData(response.data.data);
     } catch (error) {
@@ -52,19 +71,27 @@ const ConsDisp = ({ All = "", onClick }) => {
     console.log("filtered data ", filteredData);
   };
 
-  const sendData = (item) => {
-    onClick(item);
+  const sendData = (item, value) => {
+    if (value === "consultant") {
+      onClickCons(item);
+      return;
+    } else {
+      const myData = data.filter((items) => items?.speciality === item);
+      onClickSpec(myData);
+    }
   };
 
   return (
     <div className="bg-white bg-opacity-10 backdrop-blur-lg border border-white border-opacity-30 shadow-lg my-4 mx-4  p-3 rounded-3xl">
-      <CenterHeading title={"FIND CONSULTANT"} />
-      <div className="flex justify-center my-3">
-        <SimpleInput
-          placeholder={"Enter Consultant Name"}
-          onChange={(e) => filterNames(e.target.value)}
-        />
-      </div>
+      {/* <div className="flex space-x-4 justify-center ">
+        <CenterHeading title={"FIND CONSULTANT"} />
+        <div className="flex justify-center my-3">
+          <SimpleInput
+            placeholder={"Enter Consultant Name"}
+            onChange={(e) => filterNames(e.target.value)}
+          />
+        </div>
+      </div> */}
       <div className="container mx-auto mt-3">
         <div className="mt-3 grid grid-cols-7 text-xs font-bold justify-items-center items-center h-16 border border-gray-300">
           <p>Consultant Name</p>
@@ -76,17 +103,20 @@ const ConsDisp = ({ All = "", onClick }) => {
           <p>onleave</p>
         </div>
       </div>
-      <div className="h-60 overflow-auto">
+      <div
+        style={{ height: "600px" }}
+        className="overflow-auto border border-gray-300 hide-scrollbar"
+      >
         {data.length > 0 &&
           data?.map((items, index) => (
-            <div
-              className="container mx-auto mt-3 "
-              key={index}
-              onClick={() => sendData(items)}
-            >
-              <div className="mt-3 grid grid-cols-7 text-xs justify-items-center items-center h-10 border border-gray-300 hover:font-bold hover:text-blue-800 cursor-pointer">
-                <p>{items?.name}</p>
-                <p>{items?.speciality}</p>
+            <div className="container mx-auto " key={index}>
+              <div className="grid grid-cols-7 font-bold text-xs justify-items-center items-center h-10 border-b-2 border-gray-300 hover:font-bold hover:text-blue-800 cursor-pointer transform transition-transform duration-300 hover:scale-105">
+                <p onClick={() => sendData(items, "consultant")}>
+                  {items?.name}
+                </p>
+                <p onClick={() => sendData(items?.speciality, "speciality")}>
+                  {items?.speciality}
+                </p>
                 <p>{items?.timing}</p>
                 <p>{items?.days}</p>
                 <p>{items?.appointmentFee}</p>

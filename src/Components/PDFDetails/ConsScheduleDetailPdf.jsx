@@ -79,8 +79,8 @@ const ConsScheduleDetailPdf = ({ resultData, itemsPerRow = 2 }) => {
         <Text
           style={{
             textDecoration: "underline",
-            fontFamily: "Kalam",
-            fontWeight: "bold", // Use "bold" instead of "ultrabold"
+            // fontFamily: "Kalam",
+            // fontWeight: "bold", // Use "bold" instead of "ultrabold"
             fontSize: 15,
             textAlign: "center",
             color: "white",

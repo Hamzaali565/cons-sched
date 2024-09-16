@@ -16,7 +16,7 @@ function App() {
       {" "}
       {/* Wrap with Router */}
       <div>
-        <Header /> {/* Now Header has access to the Router context */}
+      
         <Routes>
           <Route path="/home" element={<ConsultantSchedule />} />
           <Route path="/consultantSetup" element={<Consultant />} />

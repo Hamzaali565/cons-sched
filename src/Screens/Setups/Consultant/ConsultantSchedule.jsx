@@ -12,12 +12,14 @@ import ButtonDis from "../../../Components/Button/ButtonDis";
 import ConSchedulePDF from "../../../Components/PDFDetails/ConsSchedulePdf";
 import ConsScheduleDetailPdf from "../../../Components/PDFDetails/ConsScheduleDetailPdf";
 import ConsDisp from "../../../Components/ConsultantDisp/ConsDisp";
+import Header from "../../../Components/Header/Header";
 
 const ConsultantSchedule = () => {
   const [consData, setConsData] = useState([]);
   const [selectType, setSelectedType] = useState("");
   const [specialityData, setSpecialityData] = useState(null);
   const [open, setOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
 
   const url = useSelector((state) => state?.url);
 
@@ -138,9 +140,9 @@ const ConsultantSchedule = () => {
 
   return (
     <div>
-      <div className="bg-white bg-opacity-10 backdrop-blur-lg border border-white border-opacity-30 shadow-lg my-4 mx-4  p-3 rounded-3xl">
-        <CenterHeading title={"Consultant Schedule"} />
-        <div className="flex items-center flex-col space-y-2 mt-3">
+      <Header onChange={(e) => setSearchValue(e)} />
+      <div className=" my-4 mx-4  p-3">
+        {/* <div className="flex items-center flex-col space-y-2 mt-3">
           <SpecialityModal
             title={"Search With Speciality"}
             onClick={getDataFromSpeciality}
@@ -153,7 +155,7 @@ const ConsultantSchedule = () => {
               placeholder={"Selected Speciality"}
             />
           )}
-        </div>
+        </div> */}
         {consData.length > 0 && (
           <div className="container mx-auto mt-3">
             <div className="mt-3 grid grid-cols-7 text-xs font-bold justify-items-center items-center h-16 border border-gray-300">
@@ -167,7 +169,10 @@ const ConsultantSchedule = () => {
             </div>
             {consData &&
               consData.map((items, index) => (
-                <div className="mt-3 grid grid-cols-7 text-xs justify-items-center items-center h-10 border border-gray-300">
+                <div
+                  key={index}
+                  className="mt-3 grid grid-cols-7 text-xs justify-items-center items-center h-10 border border-gray-300 transform transition-transform hover:scale-105"
+                >
                   <p>{items?.name}</p>
                   <p>{items?.speciality}</p>
                   <p>{items?.timing}</p>
@@ -179,15 +184,15 @@ const ConsultantSchedule = () => {
               ))}
           </div>
         )}
-        {consData.length <= 0 && <ConsDisp onClick={printCons} />}
+        {consData.length <= 0 && (
+          <ConsDisp
+            onClickCons={printCons}
+            onClickSpec={ConScheduleThermPrint}
+            value={searchValue}
+          />
+        )}
 
         <div className="flex justify-center mt-5 space-x-3">
-          <ButtonDis
-            title={"Print Selected Data"}
-            disabled={consData.length === 0 ? true : false}
-            style={consData.length > 0 ? "bg-blue-600" : ""}
-            onClick={ConScheduleThermPrint}
-          />
           <ButtonDis title={"Print Detail"} onClick={getData} />
           <ButtonDis title={"Refereh"} onClick={resetData} />
         </div>

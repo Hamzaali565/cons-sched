@@ -88,16 +88,16 @@ const ConSchedulePDF = ({ consDetails }) => {
                   {items?.name}
                 </Text>
                 <Text style={styles.text}>{items?.qualification}</Text>
-                <Text style={styles.text}>
+                <Text style={[styles.text, { fontSize: 10 }]}>
                   {items?.days} {items?.timing}
                 </Text>
                 {items?.timing1 && (
-                  <Text style={styles.text}>
+                  <Text style={[styles.text, { fontSize: 10 }]}>
                     {items?.days1} {items?.timing1}
                   </Text>
                 )}
                 {items?.timing2 && (
-                  <Text style={styles.text}>
+                  <Text style={[styles.text, { fontSize: 10 }]}>
                     {items?.days2} {items?.timing2}
                   </Text>
                 )}

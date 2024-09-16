@@ -8,6 +8,7 @@ import Loader from "../../../Components/Modal/Loader";
 import { ErrorAlert, SuccessAlert } from "../../../Components/Alert/Alert";
 import ConsultantModal from "../../../Components/Modal/ConsultantModal";
 import SpecialityModal from "../../../Components/Modal/SpecialityModal";
+import Header from "../../../Components/Header/Header";
 
 const Consultant = () => {
   const [name, setName] = useState("");
@@ -170,185 +171,188 @@ const Consultant = () => {
   };
 
   return (
-    <div className="bg-white bg-opacity-10 backdrop-blur-lg border border-white border-opacity-30 shadow-lg my-4 mx-4  p-3 rounded-3xl">
-      <CenterHeading title={"Consultant"} />
-      <div className="flex justify-center my-4 space-x-2">
-        <ConsultantModal
-          title={"Select Consultant"}
-          onClick={(e) => {
-            updateDetails(e);
-          }}
-          All="Ok"
-        />
-        <SpecialityModal
-          title={"Select Speciality"}
-          onClick={(data) => setSpecialityData(data)}
-        />
-      </div>
-      <div className="flex flex-col items-center space-y-2 mt-3 md:grid md:grid-cols-2 md:justify-items-center md:gap-y-2">
-        <LabeledInput
-          label={"Name"}
-          placeholder={"Please Enter Name"}
-          value={name}
-          onChange={(e) => setName(e.target.value.toUpperCase())}
-        />
-        <LabeledInput
-          label={"Speciality"}
-          placeholder={"Speciality"}
-          value={(specialityData && specialityData?.speciality) || ""}
-          disabled={true}
-          onChange={(e) => setSpeciality(e.target.value.toUpperCase())}
-        />
-        <LabeledInput
-          label={"PMDC"}
-          placeholder={"PMDC"}
-          value={pmdc}
-          onChange={(e) => setPmdc(e.target.value.toUpperCase())}
-        />
-
-        <LabeledInput
-          label={"Address"}
-          placeholder={"Address"}
-          value={address}
-          onChange={(e) => setAddress(e.target.value.toUpperCase())}
-        />
-        <LabeledInput
-          label={"Email"}
-          placeholder={"Email"}
-          value={email}
-          onChange={(e) => setEmail(e.target.value.toLowerCase())}
-        />
-        <LabeledInput
-          label={"CNIC"}
-          placeholder={"CNIC"}
-          value={cnic}
-          type={"Number"}
-          onChange={(e) => setCnic(e.target.value.toUpperCase())}
-        />
-        <LabeledInput
-          label={"Phone"}
-          placeholder={"Phone"}
-          value={phone}
-          type={"Number"}
-          onChange={(e) => setPhone(e.target.value.toUpperCase())}
-        />
-        <LabeledInput
-          label={"Status"}
-          type={"checkbox"}
-          checked={status}
-          onChange={(e) => setStatus(e.target.checked)}
-        />
-        <LabeledInput
-          label={"Day 1 "}
-          placeholder={"MON - TUES - WED"}
-          value={days ? days : ""}
-          onChange={(e) => setDays(e.target.value.toUpperCase())}
-        />
-        <LabeledInput
-          label={"Day 2"}
-          placeholder={"MON - TUES - WED"}
-          value={days1 ? days1 : ""}
-          onChange={(e) => setDays1(e.target.value.toUpperCase())}
-        />
-        <LabeledInput
-          label={"Day 3"}
-          placeholder={"MON - TUES - WED"}
-          value={days2 ? days2 : ""}
-          onChange={(e) => setDays2(e.target.value.toUpperCase())}
-        />
-        <LabeledInput
-          label={"Timing of Day 1"}
-          onChange={(e) => setTiming(e.target.value.toUpperCase())}
-          value={timing ? timing : ""}
-          placeholder={"12pm - 2pm"}
-        />
-        <LabeledInput
-          label={"Timing of Day 2"}
-          onChange={(e) => setTiming1(e.target.value.toUpperCase())}
-          value={timing1 ? timing1 : ""}
-          placeholder={"4pm - 6pm"}
-        />
-        <LabeledInput
-          label={"Timing of Day 3 "}
-          onChange={(e) => setTiming2(e.target.value.toUpperCase())}
-          value={timing2 ? timing2 : ""}
-          placeholder={"8pm - 10pm"}
-        />
-        <LabeledInput
-          label={"Qualification"}
-          onChange={(e) => setQualification(e.target.value.toUpperCase())}
-          value={qualification ? qualification : ""}
-          placeholder={"MBBS, DTCD (UK)"}
-        />
-        <LabeledInput
-          label={"Room No"}
-          onChange={(e) => setRoomNo(e.target.value.toUpperCase())}
-          value={roomNo ? roomNo : ""}
-          placeholder={"OPD 6-A FIRST FLOOR"}
-        />
-        <LabeledInput
-          label={"Remarks"}
-          onChange={(e) => setRemarks(e.target.value.toUpperCase())}
-          value={remarks ? remarks : ""}
-          placeholder={"Remarks"}
-        />
-        <LabeledInput
-          label={"OnLeave"}
-          type={"checkbox"}
-          checked={onLeave}
-          onChange={(e) => setOnLeave(e.target.checked)}
-        />
-        <LabeledInput
-          label={"Appointment Fee"}
-          onChange={(e) => setAppointmentFee(e.target.value)}
-          value={appointmentFee ? appointmentFee : ""}
-          type={"Number"}
-          placeholder={"1200"}
-        />
-        <LabeledInput
-          label={"Welfare Fee"}
-          onChange={(e) => setWelfareFee(e.target.value)}
-          value={welfareFee ? welfareFee : ""}
-          placeholder={"700"}
-        />
-        <LabeledInput
-          label={"Consultant Share"}
-          onChange={(e) => setConsultantShare(e.target.value)}
-          value={consultantShare ? consultantShare : ""}
-          placeholder={"70"}
-        />
-      </div>
-      <div className="flex flex-col mt-4 items-center space-y-2 md:flex-row md:justify-center md:space-y-0 md:space-x-2">
-        <ButtonDis title={"Save"} onClick={submitData} />
-        <ButtonDis title={"Refresh"} onClick={resetFunction} />
-      </div>
-      <Loader onClick={open} title={"DATA SUBMITTING ..."} />
+    <div>
+      <Header inpShow={false} />
       <div className="bg-white bg-opacity-10 backdrop-blur-lg border border-white border-opacity-30 shadow-lg my-4 mx-4  p-3 rounded-3xl">
-        <CenterHeading title={"Create Consultant Speciality"} />
-        <div className="flex justify-center mt-3">
+        <CenterHeading title={"Consultant"} />
+        <div className="flex justify-center my-4 space-x-2">
+          <ConsultantModal
+            title={"Select Consultant"}
+            onClick={(e) => {
+              updateDetails(e);
+            }}
+            All="Ok"
+          />
           <SpecialityModal
-            title={"Update Speciality"}
-            onClick={(data) => setUpdateSpeciality(data)}
+            title={"Select Speciality"}
+            onClick={(data) => setSpecialityData(data)}
           />
         </div>
-        <div className="flex items-center flex-col space-y-3 mt-4">
+        <div className="flex flex-col items-center space-y-2 mt-3 md:grid md:grid-cols-2 md:justify-items-center md:gap-y-2">
           <LabeledInput
-            label={"Enter Speciality"}
-            placeholder={"Enter Speciality"}
-            onChange={(e) => handleSpeciality(e.target.value)}
-            value={
-              (updateSpeciality && updateSpeciality?.speciality) || speciality
-            }
+            label={"Name"}
+            placeholder={"Please Enter Name"}
+            value={name}
+            onChange={(e) => setName(e.target.value.toUpperCase())}
           />
-          <div className="flex space-x-3">
-            <ButtonDis title={"Save"} onClick={submitSpeciality} />
-            <ButtonDis
-              title={"Refresh"}
-              onClick={() => {
-                setSpeciality("");
-                setUpdateSpeciality(null);
-              }}
+          <LabeledInput
+            label={"Speciality"}
+            placeholder={"Speciality"}
+            value={(specialityData && specialityData?.speciality) || ""}
+            disabled={true}
+            onChange={(e) => setSpeciality(e.target.value.toUpperCase())}
+          />
+          <LabeledInput
+            label={"PMDC"}
+            placeholder={"PMDC"}
+            value={pmdc}
+            onChange={(e) => setPmdc(e.target.value.toUpperCase())}
+          />
+
+          <LabeledInput
+            label={"Address"}
+            placeholder={"Address"}
+            value={address}
+            onChange={(e) => setAddress(e.target.value.toUpperCase())}
+          />
+          <LabeledInput
+            label={"Email"}
+            placeholder={"Email"}
+            value={email}
+            onChange={(e) => setEmail(e.target.value.toLowerCase())}
+          />
+          <LabeledInput
+            label={"CNIC"}
+            placeholder={"CNIC"}
+            value={cnic}
+            type={"Number"}
+            onChange={(e) => setCnic(e.target.value.toUpperCase())}
+          />
+          <LabeledInput
+            label={"Phone"}
+            placeholder={"Phone"}
+            value={phone}
+            type={"Number"}
+            onChange={(e) => setPhone(e.target.value.toUpperCase())}
+          />
+          <LabeledInput
+            label={"Status"}
+            type={"checkbox"}
+            checked={status}
+            onChange={(e) => setStatus(e.target.checked)}
+          />
+          <LabeledInput
+            label={"Day 1 "}
+            placeholder={"MON - TUES - WED"}
+            value={days ? days : ""}
+            onChange={(e) => setDays(e.target.value.toUpperCase())}
+          />
+          <LabeledInput
+            label={"Timing of Day 1"}
+            onChange={(e) => setTiming(e.target.value.toUpperCase())}
+            value={timing ? timing : ""}
+            placeholder={"12pm - 2pm"}
+          />
+          <LabeledInput
+            label={"Day 2"}
+            placeholder={"MON - TUES - WED"}
+            value={days1 ? days1 : ""}
+            onChange={(e) => setDays1(e.target.value.toUpperCase())}
+          />
+          <LabeledInput
+            label={"Timing of Day 2"}
+            onChange={(e) => setTiming1(e.target.value.toUpperCase())}
+            value={timing1 ? timing1 : ""}
+            placeholder={"4pm - 6pm"}
+          />
+          <LabeledInput
+            label={"Day 3"}
+            placeholder={"MON - TUES - WED"}
+            value={days2 ? days2 : ""}
+            onChange={(e) => setDays2(e.target.value.toUpperCase())}
+          />
+          <LabeledInput
+            label={"Timing of Day 3 "}
+            onChange={(e) => setTiming2(e.target.value.toUpperCase())}
+            value={timing2 ? timing2 : ""}
+            placeholder={"8pm - 10pm"}
+          />
+          <LabeledInput
+            label={"Qualification"}
+            onChange={(e) => setQualification(e.target.value.toUpperCase())}
+            value={qualification ? qualification : ""}
+            placeholder={"MBBS, DTCD (UK)"}
+          />
+          <LabeledInput
+            label={"Room No"}
+            onChange={(e) => setRoomNo(e.target.value.toUpperCase())}
+            value={roomNo ? roomNo : ""}
+            placeholder={"OPD 6-A FIRST FLOOR"}
+          />
+          <LabeledInput
+            label={"Remarks"}
+            onChange={(e) => setRemarks(e.target.value.toUpperCase())}
+            value={remarks ? remarks : ""}
+            placeholder={"Remarks"}
+          />
+          <LabeledInput
+            label={"OnLeave"}
+            type={"checkbox"}
+            checked={onLeave}
+            onChange={(e) => setOnLeave(e.target.checked)}
+          />
+          <LabeledInput
+            label={"Appointment Fee"}
+            onChange={(e) => setAppointmentFee(e.target.value)}
+            value={appointmentFee ? appointmentFee : ""}
+            type={"Number"}
+            placeholder={"1200"}
+          />
+          <LabeledInput
+            label={"Welfare Fee"}
+            onChange={(e) => setWelfareFee(e.target.value)}
+            value={welfareFee ? welfareFee : ""}
+            placeholder={"700"}
+          />
+          <LabeledInput
+            label={"Consultant Share"}
+            onChange={(e) => setConsultantShare(e.target.value)}
+            value={consultantShare ? consultantShare : ""}
+            placeholder={"70"}
+          />
+        </div>
+        <div className="flex flex-col mt-4 items-center space-y-2 md:flex-row md:justify-center md:space-y-0 md:space-x-2">
+          <ButtonDis title={"Save"} onClick={submitData} />
+          <ButtonDis title={"Refresh"} onClick={resetFunction} />
+        </div>
+        <Loader onClick={open} title={"DATA SUBMITTING ..."} />
+        <div className="bg-white bg-opacity-10 backdrop-blur-lg border border-white border-opacity-30 shadow-lg my-4 mx-4  p-3 rounded-3xl">
+          <CenterHeading title={"Create Consultant Speciality"} />
+          <div className="flex justify-center mt-3">
+            <SpecialityModal
+              title={"Update Speciality"}
+              onClick={(data) => setUpdateSpeciality(data)}
             />
+          </div>
+          <div className="flex items-center flex-col space-y-3 mt-4">
+            <LabeledInput
+              label={"Enter Speciality"}
+              placeholder={"Enter Speciality"}
+              onChange={(e) => handleSpeciality(e.target.value)}
+              value={
+                (updateSpeciality && updateSpeciality?.speciality) || speciality
+              }
+            />
+            <div className="flex space-x-3">
+              <ButtonDis title={"Save"} onClick={submitSpeciality} />
+              <ButtonDis
+                title={"Refresh"}
+                onClick={() => {
+                  setSpeciality("");
+                  setUpdateSpeciality(null);
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
