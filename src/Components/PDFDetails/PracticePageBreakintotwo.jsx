@@ -6,7 +6,9 @@ import {
   StyleSheet,
   View,
   Font,
+  Image,
 } from "@react-pdf/renderer";
+import logo from "../../Images/ZMCLogo-.png";
 
 Font.register({
   family: "Roboto",
@@ -146,7 +148,7 @@ const PracticePageBreakintotwo = ({ data }) => {
 
   const renderList = (items) =>
     items.map((item, index) => (
-      <View style={{ border: "1px solid black", marginTop: 10 }}>
+      <View style={{ border: "1px solid black" }}>
         <View
           style={{
             border: "1px solid black",
@@ -227,6 +229,7 @@ const PracticePageBreakintotwo = ({ data }) => {
     ));
 
   // Header Component for the Logo and Admission Text
+
   const Header = () => (
     <View
       style={{
@@ -234,15 +237,23 @@ const PracticePageBreakintotwo = ({ data }) => {
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        marginBottom: 10,
       }}
-      fixed
     >
-      <Text>Your Company Logo</Text>
-      <Text style={{ fontSize: 12, fontFamily: "Roboto" }}>Admission Form</Text>
+      <View style={styles.logoContainer}>
+        <Image src={logo} style={styles.Image} />
+      </View>
+      <View
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontSize: 10 }}>Consultant Weekly Schedule</Text>
+        <Text style={{ fontSize: 10 }}>021 3878 4012-16</Text>
+      </View>
     </View>
   );
-
   const MyPage = () => (
     <Page style={styles.page}>
       {/* Render the Header */}
@@ -253,14 +264,14 @@ const PracticePageBreakintotwo = ({ data }) => {
         <View style={styles.column}>{renderList(secondColumn)}</View>
       </View>
 
-      {/* <View style={styles.pageNumber}>
+      <View style={styles.pageNumber}>
         <Text
           render={({ pageNumber, totalPages }) =>
             `Page ${pageNumber} of ${totalPages}`
           }
           fixed
         />
-      </View> */}
+      </View>
     </Page>
   );
 
@@ -304,6 +315,17 @@ const styles = StyleSheet.create({
     right: 0,
     textAlign: "center",
     fontSize: 10,
+  },
+  logoContainer: {
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "row",
+    marginBottom: 10,
+  },
+  Image: {
+    height: "40",
+    marginTop: "3",
+    width: "300",
   },
 });
 
