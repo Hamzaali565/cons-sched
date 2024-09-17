@@ -8,7 +8,7 @@ import CenterHeading from "../Center Heading/CenterHeading";
 
 const Header = ({ onChange, inpShow = true }) => {
   const navigate = useNavigate(); // using 'const' here
-
+  let pass = "1234554321";
   const navigateToHome = () => {
     navigate("/home"); // Directly passing the path
   };
@@ -34,9 +34,40 @@ const Header = ({ onChange, inpShow = true }) => {
       if (result.isConfirmed) {
         const userInput = result.value;
         console.log("User input:", userInput);
-        if (userInput === "1234554321") {
+        if (userInput === pass) {
           // Now you can use `userInput` in your logic
           navigate("/consultantSetup"); // Directly passing the path
+          return;
+        } else {
+          ErrorAlert({ text: "INCORRECT PASSWORD!!!", timer: 2000 });
+        }
+      }
+    });
+  };
+  const navigateToForms = () => {
+    Swal.fire({
+      title: "Please Enter Password",
+      input: "password",
+      inputAttributes: {
+        autocapitalize: "off",
+      },
+      showCancelButton: true,
+      confirmButtonText: "Submit",
+      showLoaderOnConfirm: false, // Disable the loader since no async action is needed
+      preConfirm: (inputValue) => {
+        // You can do basic validation if needed
+        if (!inputValue) {
+          Swal.showValidationMessage("Input cannot be empty");
+        }
+        return inputValue;
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const userInput = result.value;
+        console.log("User input:", userInput);
+        if (userInput === pass) {
+          // Now you can use `userInput` in your logic
+          navigate("/formsIT"); // Directly passing the path
           return;
         } else {
           ErrorAlert({ text: "INCORRECT PASSWORD!!!", timer: 2000 });
@@ -65,6 +96,7 @@ const Header = ({ onChange, inpShow = true }) => {
       <div className="flex justify-center space-x-5">
         <ButtonDis title={"Setup"} onClick={navigateToConsultant} />
         <ButtonDis title={"Schedule"} onClick={navigateToHome} />
+        <ButtonDis title={"Forms"} onClick={navigateToForms} />
       </div>
     </div>
   );

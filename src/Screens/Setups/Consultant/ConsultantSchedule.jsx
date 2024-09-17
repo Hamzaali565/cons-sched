@@ -1,8 +1,4 @@
 import React, { useState } from "react";
-import CenterHeading from "../../../Components/Center Heading/CenterHeading";
-import SpecialityModal from "../../../Components/Modal/SpecialityModal";
-import ConsultantModal from "../../../Components/Modal/ConsultantModal";
-import LabeledInput from "../../../Components/LabelledInput/LabeledInput";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import Loader from "../../../Components/Modal/Loader";
