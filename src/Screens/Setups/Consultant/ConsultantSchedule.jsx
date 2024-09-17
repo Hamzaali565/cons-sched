@@ -36,23 +36,23 @@ const ConsultantSchedule = () => {
     setSpecialityData(null);
   };
 
-  const getDataFromSpeciality = async (data) => {
-    try {
-      setOpen(true);
-      setSpecialityData(data);
-      setSelectedType("");
-      const response = await axios.get(
-        `${url}/opd/consultantSchedule?speciality=${data?.speciality}&specialityId=${data?._id}`
-      );
-      console.log("Response of getDataFromSpeciality", response);
-      setConsData(response?.data?.data?.data);
-      setOpen(false);
-    } catch (error) {
-      console.log("Error of getDataFromSpeciality", error);
-      setOpen(false);
-      setConsData([]);
-    }
-  };
+  // const getDataFromSpeciality = async (data) => {
+  //   try {
+  //     setOpen(true);
+  //     setSpecialityData(data);
+  //     setSelectedType("");
+  //     const response = await axios.get(
+  //       `${url}/opd/consultantSchedule?speciality=${data?.speciality}&specialityId=${data?._id}`
+  //     );
+  //     console.log("Response of getDataFromSpeciality", response);
+  //     setConsData(response?.data?.data?.data);
+  //     setOpen(false);
+  //   } catch (error) {
+  //     console.log("Error of getDataFromSpeciality", error);
+  //     setOpen(false);
+  //     setConsData([]);
+  //   }
+  // };
 
   const ConScheduleThermPrint = async (data) => {
     const key = uuidv4();

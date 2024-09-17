@@ -5,12 +5,13 @@ import ButtonDis from "../../../Components/Button/ButtonDis";
 import InternetFacultyForm from "../../../Components/PDFDetails/InternetFacultyForm";
 import { pdf } from "@react-pdf/renderer";
 import { v4 as uuidv4 } from "uuid";
+import UserLoginPDF from "../../../Components/PDFDetails/UserLoginPDF";
 const Forms = () => {
   const printForm = async (data) => {
     const key = uuidv4();
 
     // Create a PDF document as a Blob
-    const blob = await pdf(<InternetFacultyForm />).toBlob();
+    const blob = await pdf(<UserLoginPDF />).toBlob();
 
     // Create a Blob URL and open it in a new tab
     let url = URL.createObjectURL(blob);
