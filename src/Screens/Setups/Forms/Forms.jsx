@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../../Components/Header/Header";
 import SimpleDropDown from "../../../Components/SimpleDropdown/SimpleDropDown";
 import ButtonDis from "../../../Components/Button/ButtonDis";
@@ -6,17 +6,59 @@ import InternetFacultyForm from "../../../Components/PDFDetails/InternetFacultyF
 import { pdf } from "@react-pdf/renderer";
 import { v4 as uuidv4 } from "uuid";
 import UserLoginPDF from "../../../Components/PDFDetails/UserLoginPDF";
+import { ErrorAlert } from "../../../Components/Alert/Alert";
+import Loader from "../../../Components/Modal/Loader";
 const Forms = () => {
-  const printForm = async (data) => {
+  const [selectedValue, setSelectedValue] = React.useState("");
+  const [toggle, setToggle] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [dropData, setDropData] = useState([
+    { name: "---" },
+    { name: "User Login Form" },
+    { name: "Internet Faculty Form" },
+  ]);
+  useEffect(() => {
+    setDropData([
+      { name: "---" },
+      { name: "User Login Form" },
+      { name: "Internet Faculty Form" },
+    ]);
+  }, [toggle]);
+
+  const reset = () => {
+    setSelectedValue("");
+    setDropData([]);
+    setToggle(!toggle);
+  };
+
+  const printForm = async () => {
     const key = uuidv4();
+    setOpen(true);
 
     // Create a PDF document as a Blob
-    const blob = await pdf(<UserLoginPDF />).toBlob();
+    let blob;
+    let url;
+    if (selectedValue === "User Login Form") {
+      blob = await pdf(<UserLoginPDF />).toBlob();
 
-    // Create a Blob URL and open it in a new tab
-    let url = URL.createObjectURL(blob);
-    window.open(url, "_blank");
-    url = "";
+      // Create a Blob URL and open it in a new tab
+      url = URL.createObjectURL(blob);
+      window.open(url, "_blank");
+      setOpen(false);
+      url = "";
+      return;
+    } else if (selectedValue === "Internet Faculty Form") {
+      blob = await pdf(<InternetFacultyForm />).toBlob();
+
+      // Create a Blob URL and open it in a new tab
+      url = URL.createObjectURL(blob);
+      window.open(url, "_blank");
+      url = "";
+      setOpen(false);
+    } else {
+      ErrorAlert({ text: "Please Select Form Type", timer: 2000 });
+      setOpen(false);
+    }
   };
 
   return (
@@ -26,18 +68,15 @@ const Forms = () => {
       <div className="mt-4">
         <SimpleDropDown
           DropDownLabel={"Select Form Type"}
-          data={[
-            { name: "---" },
-            { name: "User Login Form" },
-            { name: "Internet Faculty Form" },
-          ]}
-          onChange={(name) => console.log(name)}
+          data={dropData}
+          onChange={(name) => setSelectedValue(name)}
         />
       </div>
       <div className="flex justify-center space-x-3 mt-7">
         <ButtonDis title={"Print"} onClick={printForm} />
-        <ButtonDis title={" Refresh"} />
+        <ButtonDis title={" Refresh"} onClick={reset} />
       </div>
+      <Loader onClick={open} title={"Wait..."} />
     </div>
   );
 };
