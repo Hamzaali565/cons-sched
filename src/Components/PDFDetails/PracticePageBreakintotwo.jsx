@@ -15,331 +15,18 @@ Font.register({
   src: "https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxP.ttf",
 });
 
-// const PracticePageBreakintotwo = ({ data }) => {
-//   console.log("data ", data);
-const PracticePageBreakintotwo = () => {
-  let data = [
-    [
-      {
-        speciality: "Ortho",
-        name: "dr. hamza",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-      {
-        speciality: "Ortho",
-        name: "dr. faizan",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-      {
-        speciality: "Ortho",
-        name: "dr. Rafiq",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-      {
-        speciality: "Ortho",
-        name: "dr. shafiq",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-      {
-        speciality: "Ortho",
-        name: "dr. gulzar",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-    ],
-    [
-      {
-        speciality: "Skin",
-        name: "dr. hamza",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-      {
-        speciality: "Skin",
-        name: "dr. faizan",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-      {
-        speciality: "Skin",
-        name: "dr. Rafiq",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-      {
-        speciality: "Skin",
-        name: "dr. shafiq",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-      {
-        speciality: "Skin",
-        name: "dr. gulzar",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-    ],
-    [
-      {
-        speciality: "Nuero",
-        name: "dr. hamza",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-      {
-        speciality: "Nuero",
-        name: "dr. faizan",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-      {
-        speciality: "Nuero",
-        name: "dr. Rafiq",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-      {
-        speciality: "Nuero",
-        name: "dr. shafiq",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-      {
-        speciality: "Nuero",
-        name: "dr. gulzar",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-    ],
-    [
-      {
-        speciality: "General Medicine",
-        name: "dr. hamza",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-      {
-        speciality: "General Medicine",
-        name: "dr. faizan",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-      {
-        speciality: "General Medicine",
-        name: "dr. Rafiq",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-      {
-        speciality: "General Medicine",
-        name: "dr. shafiq",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-      {
-        speciality: "General Medicine",
-        name: "dr. gulzar",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-    ],
-    [
-      {
-        speciality: "General Surgory",
-        name: "dr. hamza",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-      {
-        speciality: "General Surgory",
-        name: "dr. faizan",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-      {
-        speciality: "General Surgory",
-        name: "dr. Rafiq",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-      {
-        speciality: "General Surgory",
-        name: "dr. shafiq",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-      {
-        speciality: "General Surgory",
-        name: "dr. gulzar",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-    ],
-    [
-      {
-        speciality: "General Surgory",
-        name: "dr. hamza",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-      {
-        speciality: "General Surgory",
-        name: "dr. faizan",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-      {
-        speciality: "General Surgory",
-        name: "dr. Rafiq",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-      {
-        speciality: "General Surgory",
-        name: "dr. shafiq",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-      {
-        speciality: "General Surgory",
-        name: "dr. gulzar",
-        timing: "",
-        days: "",
-        timing1: "",
-        days1: "",
-        timing2: "",
-        days2: "",
-      },
-    ],
-  ];
-
+const PracticePageBreakintotwo = ({ data }) => {
   const half = Math.ceil(data.length / 2);
   const firstColumn = data.slice(0, half);
   const secondColumn = data.slice(half);
 
   const renderList = (items) =>
     items.map((item, index) => (
-      <View style={{ border: "1px solid black", marginTop: 8 }}>
+      <View
+        key={index}
+        style={{ border: "1px solid black", marginTop: 8 }}
+        wrap={false}
+      >
         <View
           style={{
             border: "1px solid black",
@@ -350,14 +37,12 @@ const PracticePageBreakintotwo = () => {
             textAlign: "center",
           }}
         >
-          <Text key={index} style={[styles.text, { fontSize: 12 }]}>
+          <Text style={[styles.text, { fontSize: 10 }]}>
             {item[0].speciality}
           </Text>
         </View>
-        {/* doctor Name */}
-
-        {item.map((consData, index) => (
-          <View>
+        {item.map((consData, idx) => (
+          <View key={idx}>
             <View
               style={{
                 border: "1px solid black",
@@ -382,7 +67,7 @@ const PracticePageBreakintotwo = () => {
               <Text
                 style={{
                   border: "1px solid black",
-                  fontSize: 7,
+                  fontSize: 6,
                   padding: 2,
                   flex: 1,
                 }}
@@ -393,7 +78,7 @@ const PracticePageBreakintotwo = () => {
                 <Text
                   style={{
                     border: "1px solid black",
-                    fontSize: 7,
+                    fontSize: 6,
                     padding: 2,
                     flex: 1,
                   }}
@@ -405,7 +90,7 @@ const PracticePageBreakintotwo = () => {
                 <Text
                   style={{
                     border: "1px solid black",
-                    fontSize: 7,
+                    fontSize: 6,
                     padding: 2,
                     flex: 1,
                   }}
@@ -419,8 +104,6 @@ const PracticePageBreakintotwo = () => {
       </View>
     ));
 
-  // Header Component for the Logo and Admission Text
-
   const Header = () => (
     <View
       style={{
@@ -430,9 +113,7 @@ const PracticePageBreakintotwo = () => {
         alignItems: "center",
       }}
     >
-      <View style={styles.logoContainer}>
-        <Image src={logo} style={styles.Image} />
-      </View>
+      <Image src={logo} style={styles.Image} />
       <View
         style={{
           display: "flex",
@@ -445,24 +126,26 @@ const PracticePageBreakintotwo = () => {
       </View>
     </View>
   );
+
   const MyPage = () => (
     <Page style={styles.page}>
-      {/* Render the Header */}
-      <Header />
-
+      <View fixed>
+        <Header />
+        <Text>
+          ________________________________________________________________________
+        </Text>
+      </View>
       <View style={styles.columns}>
         <View style={styles.column}>{renderList(firstColumn)}</View>
         <View style={styles.column}>{renderList(secondColumn)}</View>
       </View>
-
-      <View style={styles.pageNumber}>
-        <Text
-          render={({ pageNumber, totalPages }) =>
-            `Page ${pageNumber} of ${totalPages}`
-          }
-          fixed
-        />
-      </View>
+      <Text
+        style={styles.pageNumber}
+        render={({ pageNumber, totalPages }) =>
+          `Page ${pageNumber} of ${totalPages}`
+        }
+        fixed
+      />
     </Page>
   );
 
@@ -481,23 +164,14 @@ const styles = StyleSheet.create({
   columns: {
     flexDirection: "row",
     justifyContent: "space-between",
+    marginBottom: 20, // Ensure space for page number
   },
   column: {
     width: "48%",
     padding: 5,
   },
   text: {
-    marginBottom: 5,
-    fontSize: 10,
-  },
-  footer: {
-    left: 0,
-    right: 0,
-    bottom: 30,
-    position: "absolute",
-    width: "100%",
-    height: "2",
-    backgroundColor: "black",
+    fontSize: 6,
   },
   pageNumber: {
     position: "absolute",
@@ -507,16 +181,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 10,
   },
-  logoContainer: {
-    display: "flex",
-    justifyContent: "center",
-    flexDirection: "row",
-    marginBottom: 10,
-  },
   Image: {
-    height: "40",
-    marginTop: "3",
-    width: "300",
+    width: 300,
+    height: 60,
   },
 });
 
