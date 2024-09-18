@@ -215,7 +215,7 @@ const InternetFacultyForm = () => {
           <Text>Processed Date: ________________________</Text>
         </View>
 
-        <View style={{ marginTop: 15, fontSize: 12 }}>
+        <View style={{ marginTop: 30, fontSize: 12 }}>
           <Text>Verfified By: ________________________</Text>
           <Text>{`(Dept. In-Charge)`}</Text>
         </View>

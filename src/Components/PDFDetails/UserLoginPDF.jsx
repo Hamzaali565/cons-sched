@@ -168,7 +168,7 @@ const UserLoginPDF = ({ billData, userName }) => {
                 marginLeft: 10,
               }}
             >
-              <Text>HMS</Text>
+              <Text>SOFTRONIC</Text>
             </View>
             <View
               style={{
@@ -190,29 +190,7 @@ const UserLoginPDF = ({ billData, userName }) => {
                 marginLeft: 10,
               }}
             >
-              <Text>LAB</Text>
-            </View>
-            <View
-              style={{
-                border: "1px solid black",
-
-                padding: 5,
-                fontSize: 12,
-                marginLeft: 10,
-              }}
-            >
-              <Text>IPD</Text>
-            </View>
-            <View
-              style={{
-                border: "1px solid black",
-
-                padding: 5,
-                fontSize: 12,
-                marginLeft: 10,
-              }}
-            >
-              <Text>SIDAT</Text>
+              <Text>SIDAT HYDER</Text>
             </View>
           </View>
         </View>
@@ -326,7 +304,7 @@ const UserLoginPDF = ({ billData, userName }) => {
           <Text>Processed Date: ________________________</Text>
         </View>
 
-        <View style={{ marginTop: 15, fontSize: 12 }}>
+        <View style={{ marginTop: 30, fontSize: 12 }}>
           <Text>Verfified By: ________________________</Text>
           <Text>{`(Dept. In-Charge)`}</Text>
         </View>
