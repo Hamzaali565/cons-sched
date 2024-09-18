@@ -15,7 +15,7 @@ Font.register({
   src: "https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxP.ttf",
 });
 
-const InternetFacultyForm = () => {
+const WifiAceessPDF = () => {
   const MyPage = ({ children }) => (
     <Page style={styles.page}>
       <View
@@ -57,12 +57,14 @@ const InternetFacultyForm = () => {
   return (
     <Document>
       <MyPage>
-        <View style={styles.headC1}>
-          <Text>{`(Internet / Email) User Form`}</Text>
+        <View style={[styles.headC1, { marginTop: "15" }]}>
+          <Text>Wifi Access Form</Text>
         </View>
-        <Text style={{ textAlign: "right", marginTop: 20, fontSize: 12 }}>
+
+        <Text style={{ textAlign: "right", fontSize: 12, marginTop: "15" }}>
           Dated: __________________
         </Text>
+
         <View
           style={{
             flexDirection: "row",
@@ -74,13 +76,24 @@ const InternetFacultyForm = () => {
           <Text>Employee Name: __________________________________________</Text>
           <Text>Employee Code: ____________</Text>
         </View>
+
         <Text style={{ marginTop: 15, fontSize: 12 }}>
           Father / Husband Name:
           _______________________________________________________
         </Text>
-        <Text style={{ marginTop: 15, fontSize: 12 }}>
-          Contact No. _________________________________________
-        </Text>
+
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            marginTop: 15,
+            fontSize: 12,
+          }}
+        >
+          <Text>Contact No: ________________________</Text>
+          <Text>Department: ________________________</Text>
+        </View>
+
         <View
           style={{
             flexDirection: "row",
@@ -90,87 +103,6 @@ const InternetFacultyForm = () => {
           }}
         >
           <Text>Department: ________________________</Text>
-          <Text>Designation: ________________________</Text>
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            marginTop: 20,
-            fontSize: 12,
-          }}
-        >
-          <Text>Internet Facility:</Text>
-          <View
-            style={{
-              flexDirection: "row",
-              marginLeft: 20,
-              justifyContent: "space-between",
-            }}
-          >
-            <View
-              style={{
-                border: "1px solid black",
-                padding: 5,
-                fontSize: 12,
-                marginLeft: 10,
-              }}
-            >
-              <Text>Not Required</Text>
-            </View>
-            <View
-              style={{
-                border: "1px solid black",
-
-                padding: 5,
-                fontSize: 12,
-                marginLeft: 10,
-              }}
-            >
-              <Text>Open</Text>
-            </View>
-            <View
-              style={{
-                border: "1px solid black",
-
-                padding: 5,
-                fontSize: 12,
-                marginLeft: 10,
-              }}
-            >
-              <Text>Restricted</Text>
-            </View>
-            <View
-              style={{
-                border: "1px solid black",
-
-                padding: 5,
-                fontSize: 12,
-                marginLeft: 10,
-              }}
-            >
-              <Text>Only For Email</Text>
-            </View>
-          </View>
-        </View>
-
-        <Text style={{ marginTop: 15, fontSize: 12 }}>
-          Email-ID: _______________________________________________________
-        </Text>
-
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            marginTop: 30,
-            fontSize: 12,
-          }}
-        >
-          <View>
-            <Text>Signature: ________________________</Text>
-            <Text>{`(Employee)`}</Text>
-          </View>
-
           <View>
             <Text>Requesting By: ________________________</Text>
             <Text>{`(Dept. Incharge)`}</Text>
@@ -182,6 +114,62 @@ const InternetFacultyForm = () => {
           <Text>{`(IT Dept.)`}</Text>
         </View>
 
+        <View style={{ border: "1px solid black", marginTop: 30 }}>
+          <View style={styles.headC1}>
+            <Text>Approval of Medical Director</Text>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: 20,
+            }}
+          >
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                fontSize: 12,
+                padding: 5,
+              }}
+            >
+              <Text>Internet Facility:</Text>
+              <View
+                style={{
+                  flexDirection: "row",
+                  marginLeft: 20,
+                  justifyContent: "space-between",
+                }}
+              >
+                <View
+                  style={{
+                    border: "1px solid black",
+                    padding: 5,
+                    fontSize: 12,
+                    marginLeft: 10,
+                  }}
+                >
+                  <Text>YES</Text>
+                </View>
+                <View
+                  style={{
+                    border: "1px solid black",
+
+                    padding: 5,
+                    fontSize: 12,
+                    marginLeft: 10,
+                  }}
+                >
+                  <Text>NO</Text>
+                </View>
+              </View>
+            </View>
+            <Text style={{ fontSize: "12" }}>
+              Sign: ________________________
+            </Text>
+          </View>
+        </View>
         <View
           style={{
             border: "1px solid black",
@@ -189,7 +177,7 @@ const InternetFacultyForm = () => {
             paddingBottom: 10,
           }}
         >
-          <View style={[styles.headC1, { marginTop: 0 }]}>
+          <View style={styles.headC1}>
             <Text>For Office Use Only</Text>
           </View>
 
@@ -197,7 +185,7 @@ const InternetFacultyForm = () => {
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
-              marginTop: 30,
+              marginTop: 40,
               fontSize: 12,
               paddingHorizontal: 5,
             }}
@@ -277,8 +265,8 @@ const styles = StyleSheet.create({
     color: "white",
     backgroundColor: "#454545",
     textAlign: "center",
-    padding: "2",
-    marginTop: "10",
+    // padding: "2",
+    // marginTop: "4",
   },
   headC2: {
     display: "flex",
@@ -344,4 +332,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default InternetFacultyForm;
+export default WifiAceessPDF;

@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 import UserLoginPDF from "../../../Components/PDFDetails/UserLoginPDF";
 import { ErrorAlert } from "../../../Components/Alert/Alert";
 import Loader from "../../../Components/Modal/Loader";
+import WifiAceessPDF from "../../../Components/PDFDetails/WifiAceessPDF";
 const Forms = () => {
   const [selectedValue, setSelectedValue] = React.useState("");
   const [toggle, setToggle] = useState(false);
@@ -16,12 +17,14 @@ const Forms = () => {
     { name: "---" },
     { name: "User Login Form" },
     { name: "Internet Faculty Form" },
+    { name: "Wifi Access Form" },
   ]);
   useEffect(() => {
     setDropData([
       { name: "---" },
       { name: "User Login Form" },
       { name: "Internet Faculty Form" },
+      { name: "Wifi Access Form" },
     ]);
   }, [toggle]);
 
@@ -49,6 +52,14 @@ const Forms = () => {
       return;
     } else if (selectedValue === "Internet Faculty Form") {
       blob = await pdf(<InternetFacultyForm />).toBlob();
+
+      // Create a Blob URL and open it in a new tab
+      url = URL.createObjectURL(blob);
+      window.open(url, "_blank");
+      url = "";
+      setOpen(false);
+    } else if (selectedValue === "Wifi Access Form") {
+      blob = await pdf(<WifiAceessPDF />).toBlob();
 
       // Create a Blob URL and open it in a new tab
       url = URL.createObjectURL(blob);

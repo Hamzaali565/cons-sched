@@ -259,54 +259,47 @@ const UserLoginPDF = ({ billData, userName }) => {
           <Text>{`(IT Dept.)`}</Text>
         </View>
 
-        <Text
-          style={{
-            marginTop: 30,
-            fontFamily: "Roboto",
-            fontWeight: "bold",
-            textAlign: "center",
-            fontSize: 15,
-          }}
-        >
-          FOR OFFICE USE ONLY
-        </Text>
-        <Text
-          style={{
-            fontFamily: "Roboto",
-            fontWeight: "bold",
-            textAlign: "center",
-          }}
-        >
-          ________________________________________________________________________
-        </Text>
-
         <View
           style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
+            border: "1px solid black",
             marginTop: 30,
-            fontSize: 12,
+            paddingBottom: 10,
           }}
         >
-          <Text>Emp. Login ID: ________________________</Text>
-          <Text>Password Assigned: ________________________</Text>
-        </View>
+          <View style={[styles.headC1, { marginTop: 0 }]}>
+            <Text>For Office Use Only</Text>
+          </View>
 
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            marginTop: 30,
-            fontSize: 12,
-          }}
-        >
-          <Text>Processed by: ________________________</Text>
-          <Text>Processed Date: ________________________</Text>
-        </View>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              marginTop: 30,
+              fontSize: 12,
+              paddingHorizontal: 5,
+            }}
+          >
+            <Text>Emp. Login ID: ________________________</Text>
+            <Text>Password Assigned: ________________________</Text>
+          </View>
 
-        <View style={{ marginTop: 30, fontSize: 12 }}>
-          <Text>Verfified By: ________________________</Text>
-          <Text>{`(Dept. In-Charge)`}</Text>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              marginTop: 30,
+              fontSize: 12,
+              paddingHorizontal: 5,
+            }}
+          >
+            <Text>Processed by: ________________________</Text>
+            <Text>Processed Date: ________________________</Text>
+          </View>
+
+          <View style={{ marginTop: 30, fontSize: 12, paddingHorizontal: 5 }}>
+            <Text>Verfified By: ________________________</Text>
+            <Text>{`(Dept. In-Charge)`}</Text>
+          </View>
         </View>
       </MyPage>
     </Document>
