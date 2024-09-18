@@ -36,24 +36,6 @@ const ConsultantSchedule = () => {
     setSpecialityData(null);
   };
 
-  // const getDataFromSpeciality = async (data) => {
-  //   try {
-  //     setOpen(true);
-  //     setSpecialityData(data);
-  //     setSelectedType("");
-  //     const response = await axios.get(
-  //       `${url}/opd/consultantSchedule?speciality=${data?.speciality}&specialityId=${data?._id}`
-  //     );
-  //     console.log("Response of getDataFromSpeciality", response);
-  //     setConsData(response?.data?.data?.data);
-  //     setOpen(false);
-  //   } catch (error) {
-  //     console.log("Error of getDataFromSpeciality", error);
-  //     setOpen(false);
-  //     setConsData([]);
-  //   }
-  // };
-
   const ConScheduleThermPrint = async (data) => {
     const key = uuidv4();
 
@@ -76,19 +58,6 @@ const ConsultantSchedule = () => {
     ConScheduleThermPrint([item]);
   };
 
-  const printResultToPdf = async (data) => {
-    const key = uuidv4();
-
-    // Create a PDF document as a Blob
-    const blob = await pdf(
-      <ConsScheduleDetailPdf key={key} resultData={data} />
-    ).toBlob();
-
-    // Create a Blob URL and open it in a new tab
-    let url = URL.createObjectURL(blob);
-    window.open(url, "_blank");
-    url = "";
-  };
   const printResultToPdfPrac = async (data) => {
     const key = uuidv4();
 
@@ -99,6 +68,7 @@ const ConsultantSchedule = () => {
     let url = URL.createObjectURL(blob);
     window.open(url, "_blank");
     url = "";
+    setOpen(false);
   };
 
   const getData = async () => {
@@ -138,7 +108,6 @@ const ConsultantSchedule = () => {
       });
       // console.log("Data", sortedGrouped);
       console.log(response.data.data);
-      setOpen(false);
       printResultToPdfPrac(grouped);
     } catch (error) {
       setOpen(false);
@@ -205,7 +174,7 @@ const ConsultantSchedule = () => {
           <ButtonDis title={"Refereh"} onClick={resetData} />
         </div>
       </div>
-      <Loader onClick={open} />
+      <Loader onClick={open} title={"Please Wait ..."} />
     </div>
   );
 };
