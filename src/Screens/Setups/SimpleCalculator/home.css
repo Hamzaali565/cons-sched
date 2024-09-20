@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* General Styles */
+.body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.calculator {
+  width: 320px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.inputForm {
+  margin-bottom: 20px;
+}
+
+.input {
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #ddd;
+  background-color: #f9f9f9;
+  font-size: 24px;
+  text-align: right;
+  outline: none;
+  color: #333;
+}
+
+.Buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.Buttons button {
+  background-color: #f1f3f4;
+  border: none;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.Buttons button:hover {
+  background-color: #e0e0e0;
+}
+
+.Buttons button:active {
+  background-color: #d6d6d6;
+}
+
+.Buttons button:nth-child(4n) {
+  background-color: #ffa500;
+  color: white;
+}
+
+.Buttons button:nth-child(4n):hover {
+  background-color: #ff8c00;
+}

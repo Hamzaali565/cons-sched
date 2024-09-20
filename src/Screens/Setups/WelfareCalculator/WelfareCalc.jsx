@@ -44,10 +44,11 @@ const WelfareCalc = () => {
   };
 
   const singlePanel = () => {
-    setCash(100 - other);
+    let cashPer = 100 - other;
+    setCash(cashPer);
     setZAmount(0);
-    setOtherAmount(Number(total - total * (other / 100)));
-    setRecievable(total * (other / 100) - deposit);
+    setOtherAmount(Number(total - total * (cashPer / 100)));
+    setRecievable(total * (cashPer / 100) - deposit);
     console.log(otherAmount);
   };
 
@@ -120,7 +121,7 @@ const WelfareCalc = () => {
 
   return (
     <div>
-      <Header inpShow={false} value="Welfare Calculator" />
+      <Header inpShow={false} />
 
       <div className="flex flex-col items-center mt-4 space-y-4">
         <LabeledInput

@@ -60,7 +60,7 @@ Font.register({
 const ConSchedulePDF = ({ consDetails }) => {
   console.log("ConstDetails", consDetails);
   const MyPage = ({ children }) => (
-    <Page size={[265, "auto"]} style={styles.page}>
+    <Page size={[205, "auto"]} style={styles.page}>
       <View style={styles.logoContainer}>
         <Image src={logo} style={styles.Image} />
       </View>
@@ -82,22 +82,22 @@ const ConSchedulePDF = ({ consDetails }) => {
                 <Text
                   style={[
                     styles.text,
-                    { fontFamily: "Roboto", fontWeight: "bold", fontSize: 12 },
+                    { fontFamily: "Roboto", fontWeight: "bold", fontSize: 10 },
                   ]}
                 >
                   {items?.name}
                 </Text>
                 <Text style={styles.text}>{items?.qualification}</Text>
-                <Text style={[styles.text, { fontSize: 10 }]}>
+                <Text style={[styles.text, { fontSize: 8 }]}>
                   {items?.days} {items?.timing}
                 </Text>
                 {items?.timing1 && (
-                  <Text style={[styles.text, { fontSize: 10 }]}>
+                  <Text style={[styles.text, { fontSize: 8 }]}>
                     {items?.days1} {items?.timing1}
                   </Text>
                 )}
                 {items?.timing2 && (
-                  <Text style={[styles.text, { fontSize: 10 }]}>
+                  <Text style={[styles.text, { fontSize: 8 }]}>
                     {items?.days2} {items?.timing2}
                   </Text>
                 )}
@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 11,
     marginTop: "4",
-    marginLeft: 5,
+    marginLeft: 3,
     width: "100%",
     overflow: "hidden",
   },

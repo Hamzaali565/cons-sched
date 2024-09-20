@@ -15,6 +15,9 @@ const Header = ({ onChange, inpShow = true, value = "" }) => {
   const navigateToCalc = () => {
     navigate("/welfareCalculator"); // Directly passing the path
   };
+  const navigateToSimpCalc = () => {
+    navigate("/simpleCalculator"); // Directly passing the path
+  };
 
   const navigateToConsultant = () => {
     Swal.fire({
@@ -101,7 +104,8 @@ const Header = ({ onChange, inpShow = true, value = "" }) => {
         <ButtonDis title={"Setup"} onClick={navigateToConsultant} />
         <ButtonDis title={"Schedule"} onClick={navigateToHome} />
         <ButtonDis title={"Forms"} onClick={navigateToForms} />
-        <ButtonDis title={"Calculator"} onClick={navigateToCalc} />
+        <ButtonDis title={"Welfare"} onClick={navigateToCalc} />
+        <ButtonDis title={"Calculator"} onClick={navigateToSimpCalc} />
       </div>
     </div>
   );

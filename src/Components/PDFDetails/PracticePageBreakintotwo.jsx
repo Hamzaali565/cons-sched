@@ -30,7 +30,7 @@ const PracticePageBreakintotwo = ({ data }) => {
         <View
           style={{
             border: "1px solid black",
-            backgroundColor: "#454545",
+            backgroundColor: "#858585",
             color: "white",
             fontFamily: "Roboto",
             fontWeight: "bold",
@@ -42,13 +42,16 @@ const PracticePageBreakintotwo = ({ data }) => {
           </Text>
         </View>
         {item.map((consData, idx) => (
-          <View key={idx}>
+          <View key={idx} style={{ flexDirection: "row" }}>
             <View
               style={{
                 border: "1px solid black",
-                backgroundColor: "#454545",
+                backgroundColor: "#858585",
                 color: "white",
                 textAlign: "center",
+                justifyContent: "center",
+                flex: 1,
+                // marginTop: 1,
               }}
             >
               <Text style={styles.text}>
@@ -58,40 +61,52 @@ const PracticePageBreakintotwo = ({ data }) => {
             </View>
             <View
               style={{
-                border: "1px solid black",
                 textAlign: "center",
-                flexDirection: "row",
-                justifyContent: "space-between",
+                width: "50%",
+                border: "1px solid black",
+                // padding: 2,
               }}
             >
               <Text
                 style={{
-                  border: "1px solid black",
+                  // border: "1px solid black",
                   fontSize: 6,
-                  padding: 2,
+                  paddingBottom: 6,
                   flex: 1,
+                  marginBottom: 1,
                 }}
               >
                 {consData?.days} {consData?.timing}
               </Text>
+              {consData.days1 && (
+                <Text style={{ border: "1px solid black", height: "1" }}>
+                  ____________________________________________
+                </Text>
+              )}
               {consData?.days1 && (
                 <Text
                   style={{
-                    border: "1px solid black",
+                    // border: "1px solid black",
                     fontSize: 6,
-                    padding: 2,
+                    paddingBottom: 6,
                     flex: 1,
+                    marginBottom: 1,
                   }}
                 >
                   {consData?.days1} {consData?.timing1}
                 </Text>
               )}
+              {consData.days2 && (
+                <Text style={{ border: "1px solid black", height: "1" }}>
+                  ____________________________________________
+                </Text>
+              )}
               {consData?.days2 && (
                 <Text
                   style={{
-                    border: "1px solid black",
+                    // border: "1px solid black",
                     fontSize: 6,
-                    padding: 2,
+                    paddingBottom: 6,
                     flex: 1,
                   }}
                 >
