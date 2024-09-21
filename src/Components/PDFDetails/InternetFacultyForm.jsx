@@ -207,7 +207,7 @@ const InternetFacultyForm = () => {
           </View>
 
           <View style={{ marginTop: 30, fontSize: 12, paddingHorizontal: 5 }}>
-            <Text>Verfified By: ________________________</Text>
+            <Text>Verified By: ________________________</Text>
             <Text>{`(Dept. In-Charge)`}</Text>
           </View>
         </View>
@@ -273,9 +273,9 @@ const styles = StyleSheet.create({
     padding: "2",
   },
   headC1: {
-    border: "1px solid black",
+    border: "1px solid #858585",
     color: "white",
-    backgroundColor: "#454545",
+    backgroundColor: "#858585",
     textAlign: "center",
     padding: "2",
     marginTop: "10",

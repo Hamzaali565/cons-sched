@@ -15,8 +15,7 @@ Font.register({
   src: "https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxP.ttf",
 });
 
-const UserLoginPDF = ({ billData, userName }) => {
-  console.log("BillData", billData);
+const CCTVFormPDF = () => {
   const MyPage = ({ children }) => (
     <Page style={styles.page}>
       <View
@@ -30,16 +29,6 @@ const UserLoginPDF = ({ billData, userName }) => {
         <View style={styles.logoContainer}>
           <Image src={logo} style={styles.Image} />
         </View>
-        {/* <View
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Text style={{ fontSize: 10 }}>Consultant Weekly Schedule</Text>
-          <Text style={{ fontSize: 10 }}>021 3878 4012-16</Text>
-        </View> */}
       </View>
       <View style={styles.content}>{children}</View>
       <View style={styles.footer} />
@@ -59,38 +48,11 @@ const UserLoginPDF = ({ billData, userName }) => {
     <Document>
       <MyPage>
         <View style={styles.headC1}>
-          <Text>User Login Form</Text>
+          <Text>CCTV Request Form</Text>
         </View>
-        <View
-          style={{ marginTop: 20, flexDirection: "row", alignItems: "center" }}
-        >
-          <View
-            style={{ width: "40%", flexDirection: "row", alignItems: "center" }}
-          >
-            <Text
-              style={{
-                height: 15,
-                width: 15,
-                border: "1px solid black",
-              }}
-            />
-            <Text style={{ fontSize: 12, marginLeft: 4 }}>Active</Text>
-            <Text style={{ fontSize: 20, marginLeft: 4 }}>/</Text>
-            <Text
-              style={{
-                height: 15,
-                width: 15,
-                border: "1px solid black",
-                marginLeft: 4,
-              }}
-            />
-            <Text style={{ fontSize: 12, marginLeft: 4 }}>In-Active</Text>
-          </View>
-          <Text style={{ textAlign: "right", fontSize: 12, width: "60%" }}>
-            Dated: __________________
-          </Text>
-        </View>
-
+        <Text style={{ textAlign: "right", fontSize: 12, marginTop: "15" }}>
+          Date: __________________
+        </Text>
         <View
           style={{
             flexDirection: "row",
@@ -99,51 +61,37 @@ const UserLoginPDF = ({ billData, userName }) => {
             fontSize: 12,
           }}
         >
-          <Text>Employee Name: __________________________________________</Text>
-          <Text>Employee Code: ____________</Text>
+          <Text>Dept. In-Charge Name: _____________________________</Text>
+          <Text>Employee Code : ________________</Text>
         </View>
 
         <Text style={{ marginTop: 15, fontSize: 12 }}>
-          Father / Husband Name:
-          _______________________________________________________
+          Department: ___________________________________________
         </Text>
-
+        <Text style={{ marginTop: 15, fontSize: 12 }}>
+          Contact No: ___________________________________________
+        </Text>
         <View
           style={{
             flexDirection: "row",
-            justifyContent: "space-between",
-            marginTop: 15,
+            alignItems: "center",
+            marginTop: 40,
             fontSize: 12,
           }}
         >
-          <Text>Date of Birth: ________________________</Text>
-          <Text>Contact No: ________________________</Text>
+          <Text>CCTV Recording:</Text>
+          <View
+            style={{ border: "1px solid black", padding: 10, marginLeft: 30 }}
+          >
+            <Text style={{ fontSize: "10" }}>
+              Date: _________________ From Time: ________________ To Time:
+              ________________
+            </Text>
+            <Text style={{ fontSize: "10", marginTop: 15 }}>
+              Location: ______________________________________________
+            </Text>
+          </View>
         </View>
-
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            marginTop: 15,
-            fontSize: 12,
-          }}
-        >
-          <Text>Department: ________________________</Text>
-          <Text>Designation: ________________________</Text>
-        </View>
-
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            marginTop: 15,
-            fontSize: 12,
-          }}
-        >
-          <Text>Email: ___________________________________________</Text>
-          <Text>Date of Joining: ________________________</Text>
-        </View>
-
         <View
           style={{
             flexDirection: "row",
@@ -152,87 +100,16 @@ const UserLoginPDF = ({ billData, userName }) => {
             fontSize: 12,
           }}
         >
-          <Text>Modules:</Text>
+          <Text>Reason (In Short):</Text>
           <View
             style={{
-              flexDirection: "row",
-              marginLeft: 20,
-              justifyContent: "space-between",
+              border: "1px solid black",
+              padding: 10,
+              marginLeft: 30,
+              height: 60,
+              width: "72%",
             }}
-          >
-            <View
-              style={{
-                border: "1px solid black",
-                padding: 5,
-                fontSize: 12,
-                marginLeft: 10,
-              }}
-            >
-              <Text>SOFTRONIC</Text>
-            </View>
-            <View
-              style={{
-                border: "1px solid black",
-
-                padding: 5,
-                fontSize: 12,
-                marginLeft: 10,
-              }}
-            >
-              <Text>HRMS</Text>
-            </View>
-            <View
-              style={{
-                border: "1px solid black",
-
-                padding: 5,
-                fontSize: 12,
-                marginLeft: 10,
-              }}
-            >
-              <Text>SIDAT HYDER</Text>
-            </View>
-          </View>
-        </View>
-
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            marginTop: 20,
-            fontSize: 12,
-          }}
-        >
-          <Text>Internet Facility:</Text>
-          <View
-            style={{
-              flexDirection: "row",
-              marginLeft: 20,
-              justifyContent: "space-between",
-            }}
-          >
-            <View
-              style={{
-                border: "1px solid black",
-                padding: 5,
-                fontSize: 12,
-                marginLeft: 10,
-              }}
-            >
-              <Text>YES</Text>
-            </View>
-            <View
-              style={{
-                border: "1px solid black",
-
-                padding: 5,
-                fontSize: 12,
-                marginLeft: 10,
-              }}
-            >
-              <Text>NO</Text>
-            </View>
-          </View>
+          ></View>
         </View>
 
         <View
@@ -244,19 +121,18 @@ const UserLoginPDF = ({ billData, userName }) => {
           }}
         >
           <View>
-            <Text>Signature: ________________________</Text>
-            <Text>{`(Employee)`}</Text>
+            <Text>Requested By: _____________________</Text>
+            <Text>{`(Name & Sign)`}</Text>
           </View>
 
           <View>
-            <Text>Requesting By: ________________________</Text>
-            <Text>{`(Dept. Incharge)`}</Text>
+            <Text>Watched By: _____________________</Text>
+            <Text>{`(Name & Sign)`}</Text>
           </View>
         </View>
-
         <View style={{ marginTop: 30, fontSize: 12 }}>
-          <Text>Received By: ________________________</Text>
-          <Text>{`(IT Dept.)`}</Text>
+          <Text>Approved By: _____________________</Text>
+          <Text>{`(Admin / Medical Director)`}</Text>
         </View>
 
         <View
@@ -279,10 +155,8 @@ const UserLoginPDF = ({ billData, userName }) => {
               paddingHorizontal: 5,
             }}
           >
-            <Text>Emp. Login ID: ________________________</Text>
-            <Text>Password Assigned: ________________________</Text>
+            <Text>Recieved by: ________________________</Text>
           </View>
-
           <View
             style={{
               flexDirection: "row",
@@ -292,7 +166,7 @@ const UserLoginPDF = ({ billData, userName }) => {
               paddingHorizontal: 5,
             }}
           >
-            <Text>Processed by: ________________________</Text>
+            <Text>Processed By: ________________________</Text>
             <Text>Processed Date: ________________________</Text>
           </View>
 
@@ -301,6 +175,30 @@ const UserLoginPDF = ({ billData, userName }) => {
             <Text>{`(Dept. In-Charge)`}</Text>
           </View>
         </View>
+        <Text
+          style={{
+            marginTop: 50,
+            fontSize: 10,
+            fontFamily: "Roboto",
+            textAlign: "center",
+            color: "gray",
+          }}
+        >
+          Note: CCTV will be provided in 48 hours of time. It can only be
+          provided in couple of hours, if any emergengy occured.
+        </Text>
+        <Text
+          style={{
+            fontSize: 10,
+            fontFamily: "Roboto",
+            textAlign: "right",
+            marginRight: 30,
+            marginTop: 5,
+            color: "gray",
+          }}
+        >
+          Thankyou.
+        </Text>
       </MyPage>
     </Document>
   );
@@ -368,7 +266,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#858585",
     textAlign: "center",
     padding: "2",
-    marginTop: "4",
+    marginTop: "10",
   },
   headC2: {
     display: "flex",
@@ -432,6 +330,19 @@ const styles = StyleSheet.create({
   wid1: {
     width: "40%",
   },
+  tableCell: {
+    width: "25%",
+    borderLeft: "1px solid black",
+    borderTop: "1px solid black",
+    // borderBottom: "1px solid black",
+    padding: 5,
+    textAlign: "center",
+    fontSize: 12,
+  },
+  tableHeader: {
+    backgroundColor: "#f0f0f0", // Optional to differentiate the header
+    borderBottom: 0, // Remove bottom border from header row to avoid duplication
+  },
 });
 
-export default UserLoginPDF;
+export default CCTVFormPDF;
