@@ -63,10 +63,7 @@ export default function SpecimenModal({ onClick, title, type }) {
   const getData = async () => {
     try {
       const response = await axios.get(
-        `${url}/lab/labSpecimenDisp?type=${type}`,
-        {
-          withCredentials: true,
-        }
+        `${url}/lab/labSpecimenDisp?type=${type}`
       );
       setData(response?.data?.data?.data);
     } catch (error) {
@@ -83,11 +80,10 @@ export default function SpecimenModal({ onClick, title, type }) {
     try {
       if (specimen === "") return setMessage("Please Enter Value");
       setRotation(true);
-      const response = await axios.post(
-        `${url}/lab/labSpecimen`,
-        { specimen, type },
-        { withCredentials: true }
-      );
+      const response = await axios.post(`${url}/lab/labSpecimen`, {
+        specimen,
+        type,
+      });
       console.log("response of pushSpecimen", response.data?.data);
       setSpecimen("");
       setMessage("DATA CREATED SUCCESSFULLY");

@@ -69,9 +69,7 @@ export default function ConsultantModal({ onClick, title, All = "" }) {
     try {
       setLoaderTog(true);
       setMessage("");
-      const response = await axios.get(`${url}/getconsultant?All=${All}`, {
-        withCredentials: true,
-      });
+      const response = await axios.get(`${url}/getconsultant?All=${All}`);
       console.log(response.data.data);
       setLoaderTog(false);
       setData(response.data.data);
