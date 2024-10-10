@@ -174,6 +174,16 @@ const ConSchedulePDF = ({ consDetails }) => {
         >
           Karachi City, Sindh
         </Text>
+        <Text
+          style={{
+            marginTop: "3",
+            textAlign: "center",
+            fontSize: "10",
+            fontFamily: "Roboto",
+          }}
+        >
+          021 3878 4012-16
+        </Text>
       </MyPage>
     </Document>
   );

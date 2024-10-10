@@ -1,0 +1,157 @@
+[
+    {
+        "speciality": "NONE",
+        "createdOn": "13/09/2024 11:50:00",
+        "__v": 0,
+        "updatedOn": "13/09/2024 21:34:54"
+    },
+    {
+        "speciality": "ASTHMA AND ALLERGY",
+        "createdOn": "13/09/2024 15:57:55",
+        "__v": 0,
+        "updatedOn": "18/09/2024 12:58:58"
+    },
+    {
+        "speciality": "AUDIOLOGIST",
+        "createdOn": "13/09/2024 15:58:15",
+        "__v": 0,
+        "updatedOn": "13/09/2024 19:00:26"
+    },
+    {
+        "speciality": "CARDIOLOGY DEPT.",
+        "createdOn": "13/09/2024 15:58:29",
+        "__v": 0
+    },
+    {
+        "speciality": "CHEST MEDICINE",
+        "createdOn": "13/09/2024 15:58:41",
+        "__v": 0
+    },
+    {
+        "speciality": "CHILD / PAEDIATRIC",
+        "createdOn": "13/09/2024 15:59:38",
+        "__v": 0
+    },
+    {
+        "speciality": "CLINICAL HAEMATOLOGY, BMT PHYS",
+        "createdOn": "13/09/2024 18:47:34",
+        "__v": 0
+    },
+    {
+        "speciality": "DENTISTRY",
+        "createdOn": "13/09/2024 18:47:48",
+        "__v": 0
+    },
+    {
+        "speciality": "DIABETOLOGIST",
+        "createdOn": "13/09/2024 18:48:18",
+        "__v": 0
+    },
+    {
+        "speciality": "E.N.T SPECIALIST",
+        "createdOn": "13/09/2024 18:48:29",
+        "__v": 0
+    },
+    {
+        "speciality": "EYE / OPHTHALMOLOGY",
+        "createdOn": "13/09/2024 18:49:10",
+        "__v": 0
+    },
+    {
+        "speciality": "FACSIOMAXILARY SURGEON",
+        "createdOn": "13/09/2024 18:49:46",
+        "__v": 0
+    },
+    {
+        "speciality": "GASTROENTEROLOGIST",
+        "createdOn": "13/09/2024 18:50:24",
+        "__v": 0
+    },
+    {
+        "speciality": "GENERAL MEDICINE",
+        "createdOn": "13/09/2024 18:51:12",
+        "__v": 0
+    },
+    {
+        "speciality": "GENERAL SURGERY",
+        "createdOn": "13/09/2024 18:51:33",
+        "__v": 0
+    },
+    {
+        "speciality": "GYNAECOLOGY / OBSTETRICS",
+        "createdOn": "13/09/2024 18:51:44",
+        "__v": 0,
+        "updatedOn": "13/09/2024 18:52:18"
+    },
+    {
+        "speciality": "NEPHROLOGY",
+        "createdOn": "13/09/2024 18:52:30",
+        "__v": 0
+    },
+    {
+        "speciality": "NEURO MEDICINE",
+        "createdOn": "13/09/2024 18:52:46",
+        "__v": 0
+    },
+    {
+        "speciality": "NEURO SURGERY",
+        "createdOn": "13/09/2024 18:53:01",
+        "__v": 0
+    },
+    {
+        "speciality": "ONCOLOGY / HAEMATOLOGY",
+        "createdOn": "13/09/2024 18:53:34",
+        "__v": 0
+    },
+    {
+        "speciality": "ORTHOPEDICS",
+        "createdOn": "13/09/2024 18:53:51",
+        "__v": 0
+    },
+    {
+        "speciality": "PAEDIATRIC SURGERY",
+        "createdOn": "13/09/2024 18:54:29",
+        "__v": 0
+    },
+    {
+        "speciality": "PHYSIOTHERAPY",
+        "createdOn": "13/09/2024 18:54:48",
+        "__v": 0
+    },
+    {
+        "speciality": "PLASTIC SURGERY",
+        "createdOn": "13/09/2024 18:55:11",
+        "__v": 0
+    },
+    {
+        "speciality": "PSYCHIATRY",
+        "createdOn": "13/09/2024 18:55:26",
+        "__v": 0
+    },
+    {
+        "speciality": "RHEUMATOLOGY",
+        "createdOn": "13/09/2024 18:55:39",
+        "__v": 0,
+        "updatedOn": "13/09/2024 18:55:55"
+    },
+    {
+        "speciality": "SKIN / DERMATOLOGY",
+        "createdOn": "13/09/2024 18:56:06",
+        "__v": 0
+    },
+    {
+        "speciality": "SONOLOGY",
+        "createdOn": "13/09/2024 18:57:00",
+        "__v": 0
+    },
+    {
+        "speciality": "UROLOGY",
+        "createdOn": "13/09/2024 18:57:11",
+        "__v": 0
+    },
+    {
+        "speciality": "ON CALL CONSULTANTS",
+        "createdOn": "13/09/2024 18:57:22",
+        "__v": 0
+    }
+]

@@ -19,6 +19,7 @@
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "buffer": "^6.0.3",
+    "file-saver": "^2.0.5",
     "moment": "^2.30.1",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.2",
@@ -38,7 +39,8 @@
     "sweetalert": "^2.1.2",
     "sweetalert2": "^11.11.0",
     "uuidv4": "^6.2.13",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "xlsx": "^0.18.5"
   },
   "scripts": {
     "start": "react-scripts start",

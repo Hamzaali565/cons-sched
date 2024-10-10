@@ -1,9 +1,11 @@
 import {
   BASE_URL,
+  I_AM,
   SET_LOGIN,
   SET_LOGIN_TOGGLE,
   SET_RESPONSE,
   SET_SHIFT,
+  SET_USER,
 } from "./actionType";
 
 export const setLogin = (login) => ({
@@ -14,6 +16,13 @@ export const setLogin = (login) => ({
 export const baseurl = () => ({
   type: BASE_URL,
 });
+
+export const setUser = (userInput) => {
+  return {
+    type: SET_USER,
+    payload: userInput,
+  };
+};
 
 export const setLoginToggle = (toggle) => ({
   type: SET_LOGIN_TOGGLE,

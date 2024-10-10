@@ -46,8 +46,9 @@ const PracticePageBreakintotwo = ({ data }) => {
             <View
               style={{
                 border: "1px solid black",
-                backgroundColor: "#858585",
-                color: "white",
+                borderBottom: "0",
+                // backgroundColor: "#858585",
+                // color: "white",
                 textAlign: "center",
                 justifyContent: "center",
                 flex: 1,
@@ -64,13 +65,14 @@ const PracticePageBreakintotwo = ({ data }) => {
                 textAlign: "center",
                 width: "50%",
                 border: "1px solid black",
+                borderBottom: "0",
+                fontSize: 6,
                 // padding: 2,
               }}
             >
               <Text
                 style={{
                   // border: "1px solid black",
-                  fontSize: 6,
                   paddingBottom: 6,
                   flex: 1,
                   marginBottom: 1,
@@ -79,7 +81,7 @@ const PracticePageBreakintotwo = ({ data }) => {
                 {consData?.days} {consData?.timing}
               </Text>
               {consData.days1 && (
-                <Text style={{ border: "1px solid black", height: "1" }}>
+                <Text style={{ borderBottom: "1px solid black", height: "1" }}>
                   ____________________________________________
                 </Text>
               )}
@@ -87,7 +89,6 @@ const PracticePageBreakintotwo = ({ data }) => {
                 <Text
                   style={{
                     // border: "1px solid black",
-                    fontSize: 6,
                     paddingBottom: 6,
                     flex: 1,
                     marginBottom: 1,
@@ -97,7 +98,7 @@ const PracticePageBreakintotwo = ({ data }) => {
                 </Text>
               )}
               {consData.days2 && (
-                <Text style={{ border: "1px solid black", height: "1" }}>
+                <Text style={{ borderBottom: "1px solid black", height: "1" }}>
                   ____________________________________________
                 </Text>
               )}
@@ -105,7 +106,6 @@ const PracticePageBreakintotwo = ({ data }) => {
                 <Text
                   style={{
                     // border: "1px solid black",
-                    fontSize: 6,
                     paddingBottom: 6,
                     flex: 1,
                   }}
@@ -190,11 +190,11 @@ const styles = StyleSheet.create({
   },
   pageNumber: {
     position: "absolute",
-    bottom: 10,
+    bottom: 5,
     left: 0,
-    right: 0,
-    textAlign: "center",
-    fontSize: 10,
+    right: 15,
+    textAlign: "right",
+    fontSize: 6,
   },
   Image: {
     width: 300,

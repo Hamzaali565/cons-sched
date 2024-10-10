@@ -118,7 +118,7 @@ const ConsultantSchedule = () => {
   return (
     <div>
       <Header onChange={(e) => setSearchValue(e)} />
-      <div className=" my-4 mx-4  p-3">
+      <div className=" mx-4 p-3">
         {/* <div className="flex items-center flex-col space-y-2 mt-3">
           <SpecialityModal
             title={"Search With Speciality"}

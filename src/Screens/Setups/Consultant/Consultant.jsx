@@ -190,65 +190,65 @@ const Consultant = () => {
         </div>
         <div className="flex flex-col items-center space-y-2 mt-3 md:grid md:grid-cols-2 md:justify-items-center md:gap-y-2">
           <LabeledInput
-            label={"Name"}
+            label={"Name*"}
             placeholder={"Please Enter Name"}
             value={name}
             onChange={(e) => setName(e.target.value.toUpperCase())}
           />
           <LabeledInput
-            label={"Speciality"}
+            label={"Speciality*"}
             placeholder={"Speciality"}
             value={(specialityData && specialityData?.speciality) || ""}
             disabled={true}
             onChange={(e) => setSpeciality(e.target.value.toUpperCase())}
           />
           <LabeledInput
-            label={"PMDC"}
+            label={"PMDC*"}
             placeholder={"PMDC"}
             value={pmdc}
             onChange={(e) => setPmdc(e.target.value.toUpperCase())}
           />
 
           <LabeledInput
-            label={"Address"}
+            label={"Address*"}
             placeholder={"Address"}
             value={address}
             onChange={(e) => setAddress(e.target.value.toUpperCase())}
           />
           <LabeledInput
-            label={"Email"}
+            label={"Email*"}
             placeholder={"Email"}
             value={email}
             onChange={(e) => setEmail(e.target.value.toLowerCase())}
           />
           <LabeledInput
-            label={"CNIC"}
+            label={"CNIC*"}
             placeholder={"CNIC"}
             value={cnic}
             type={"Number"}
             onChange={(e) => setCnic(e.target.value.toUpperCase())}
           />
           <LabeledInput
-            label={"Phone"}
+            label={"Phone*"}
             placeholder={"Phone"}
             value={phone}
             type={"Number"}
             onChange={(e) => setPhone(e.target.value.toUpperCase())}
           />
           <LabeledInput
-            label={"Status"}
+            label={"Status*"}
             type={"checkbox"}
             checked={status}
             onChange={(e) => setStatus(e.target.checked)}
           />
           <LabeledInput
-            label={"Day 1 "}
+            label={"Day 1*"}
             placeholder={"MON - TUES - WED"}
             value={days ? days : ""}
             onChange={(e) => setDays(e.target.value.toUpperCase())}
           />
           <LabeledInput
-            label={"Timing of Day 1"}
+            label={"Timing of Day 1*"}
             onChange={(e) => setTiming(e.target.value.toUpperCase())}
             value={timing ? timing : ""}
             placeholder={"12pm - 2pm"}
@@ -284,7 +284,7 @@ const Consultant = () => {
             placeholder={"MBBS, DTCD (UK)"}
           />
           <LabeledInput
-            label={"Room No"}
+            label={"Room No*"}
             onChange={(e) => setRoomNo(e.target.value.toUpperCase())}
             value={roomNo ? roomNo : ""}
             placeholder={"OPD 6-A FIRST FLOOR"}
@@ -302,17 +302,17 @@ const Consultant = () => {
             onChange={(e) => setOnLeave(e.target.checked)}
           />
           <LabeledInput
-            label={"Appointment Fee"}
+            label={"Appointment Fee*"}
             onChange={(e) => setAppointmentFee(e.target.value)}
             value={appointmentFee ? appointmentFee : ""}
             type={"Number"}
             placeholder={"1200"}
           />
           <LabeledInput
-            label={"Welfare Fee"}
+            label={"Ext. No*"}
             onChange={(e) => setWelfareFee(e.target.value)}
             value={welfareFee ? welfareFee : ""}
-            placeholder={"700"}
+            placeholder={"151"}
           />
           <LabeledInput
             label={"Consultant Share"}
