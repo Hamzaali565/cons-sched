@@ -8,7 +8,6 @@ import Loader from "../../../Components/Modal/Loader";
 import { ErrorAlert, SuccessAlert } from "../../../Components/Alert/Alert";
 import ConsultantModal from "../../../Components/Modal/ConsultantModal";
 import SpecialityModal from "../../../Components/Modal/SpecialityModal";
-import Header from "../../../Components/Header/Header";
 
 const Consultant = () => {
   const [name, setName] = useState("");
@@ -95,33 +94,37 @@ const Consultant = () => {
   const submitData = async () => {
     try {
       setOpen(true);
-      const response = await axios.post(`${url}/adddoctor`, {
-        name,
-        speciality:
-          (specialityData && specialityData?.speciality) || speciality,
-        specialityId: (specialityData && specialityData?._id) || specialityId,
-        pmdc,
-        address,
-        email,
-        cnic,
-        phone,
-        status,
-        timing,
-        timing1,
-        days,
-        days1,
-        days2,
-        timing2,
-        qualification,
-        roomNo,
-        onLeave,
-        remarks,
-        consultantShare,
-        appointmentFee,
-        welfareFee,
+      const response = await axios.post(
+        `${url}/adddoctor`,
+        {
+          name,
+          speciality:
+            (specialityData && specialityData?.speciality) || speciality,
+          specialityId: (specialityData && specialityData?._id) || specialityId,
+          pmdc,
+          address,
+          email,
+          cnic,
+          phone,
+          status,
+          timing,
+          timing1,
+          days,
+          days1,
+          days2,
+          timing2,
+          qualification,
+          roomNo,
+          onLeave,
+          remarks,
+          consultantShare,
+          appointmentFee,
+          welfareFee,
 
-        _id: (details && details?._id) || "",
-      });
+          _id: (details && details?._id) || "",
+        },
+        { withCredentials: true }
+      );
       setOpen(false);
       if (response?.data?.message === "created") {
         SuccessAlert({ text: "DOCTOR CREATED SUCCESSFULLY !!!", timer: 2000 });
@@ -140,11 +143,15 @@ const Consultant = () => {
   const submitSpeciality = async () => {
     try {
       setOpen(true);
-      const response = await axios.post(`${url}/specialty`, {
-        speciality:
-          (updateSpeciality && updateSpeciality?.speciality) || speciality,
-        _id: (updateSpeciality && updateSpeciality?._id) || "",
-      });
+      const response = await axios.post(
+        `${url}/specialty`,
+        {
+          speciality:
+            (updateSpeciality && updateSpeciality?.speciality) || speciality,
+          _id: (updateSpeciality && updateSpeciality?._id) || "",
+        },
+        { withCredentials: true }
+      );
 
       setSpeciality("");
       setUpdateSpeciality(null);
@@ -172,7 +179,6 @@ const Consultant = () => {
 
   return (
     <div>
-      <Header inpShow={false} />
       <div className="bg-white bg-opacity-10 backdrop-blur-lg border border-white border-opacity-30 shadow-lg my-4 mx-4  p-3 rounded-3xl">
         <CenterHeading title={"Consultant"} />
         <div className="flex justify-center my-4 space-x-2">
@@ -190,65 +196,65 @@ const Consultant = () => {
         </div>
         <div className="flex flex-col items-center space-y-2 mt-3 md:grid md:grid-cols-2 md:justify-items-center md:gap-y-2">
           <LabeledInput
-            label={"Name*"}
+            label={"Name"}
             placeholder={"Please Enter Name"}
             value={name}
             onChange={(e) => setName(e.target.value.toUpperCase())}
           />
           <LabeledInput
-            label={"Speciality*"}
+            label={"Speciality"}
             placeholder={"Speciality"}
             value={(specialityData && specialityData?.speciality) || ""}
             disabled={true}
             onChange={(e) => setSpeciality(e.target.value.toUpperCase())}
           />
           <LabeledInput
-            label={"PMDC*"}
+            label={"PMDC"}
             placeholder={"PMDC"}
             value={pmdc}
             onChange={(e) => setPmdc(e.target.value.toUpperCase())}
           />
 
           <LabeledInput
-            label={"Address*"}
+            label={"Address"}
             placeholder={"Address"}
             value={address}
             onChange={(e) => setAddress(e.target.value.toUpperCase())}
           />
           <LabeledInput
-            label={"Email*"}
+            label={"Email"}
             placeholder={"Email"}
             value={email}
             onChange={(e) => setEmail(e.target.value.toLowerCase())}
           />
           <LabeledInput
-            label={"CNIC*"}
+            label={"CNIC"}
             placeholder={"CNIC"}
             value={cnic}
             type={"Number"}
             onChange={(e) => setCnic(e.target.value.toUpperCase())}
           />
           <LabeledInput
-            label={"Phone*"}
+            label={"Phone"}
             placeholder={"Phone"}
             value={phone}
             type={"Number"}
             onChange={(e) => setPhone(e.target.value.toUpperCase())}
           />
           <LabeledInput
-            label={"Status*"}
+            label={"Status"}
             type={"checkbox"}
             checked={status}
             onChange={(e) => setStatus(e.target.checked)}
           />
           <LabeledInput
-            label={"Day 1*"}
+            label={"Day 1 "}
             placeholder={"MON - TUES - WED"}
             value={days ? days : ""}
             onChange={(e) => setDays(e.target.value.toUpperCase())}
           />
           <LabeledInput
-            label={"Timing of Day 1*"}
+            label={"Timing of Day 1"}
             onChange={(e) => setTiming(e.target.value.toUpperCase())}
             value={timing ? timing : ""}
             placeholder={"12pm - 2pm"}
@@ -284,7 +290,7 @@ const Consultant = () => {
             placeholder={"MBBS, DTCD (UK)"}
           />
           <LabeledInput
-            label={"Room No*"}
+            label={"Room No"}
             onChange={(e) => setRoomNo(e.target.value.toUpperCase())}
             value={roomNo ? roomNo : ""}
             placeholder={"OPD 6-A FIRST FLOOR"}
@@ -302,17 +308,17 @@ const Consultant = () => {
             onChange={(e) => setOnLeave(e.target.checked)}
           />
           <LabeledInput
-            label={"Appointment Fee*"}
+            label={"Appointment Fee"}
             onChange={(e) => setAppointmentFee(e.target.value)}
             value={appointmentFee ? appointmentFee : ""}
             type={"Number"}
             placeholder={"1200"}
           />
           <LabeledInput
-            label={"Ext. No*"}
+            label={"Welfare Fee"}
             onChange={(e) => setWelfareFee(e.target.value)}
             value={welfareFee ? welfareFee : ""}
-            placeholder={"151"}
+            placeholder={"700"}
           />
           <LabeledInput
             label={"Consultant Share"}
