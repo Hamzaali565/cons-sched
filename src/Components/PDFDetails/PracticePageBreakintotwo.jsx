@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
   columns: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 20, // Ensure space for page number
+    marginBottom: 30, // Ensure space for page number
   },
   column: {
     width: "48%",

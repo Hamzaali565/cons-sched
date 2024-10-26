@@ -10,6 +10,7 @@ import ConsScheduleDetailPdf from "../../../Components/PDFDetails/ConsScheduleDe
 import ConsDisp from "../../../Components/ConsultantDisp/ConsDisp";
 import Header from "../../../Components/Header/Header";
 import PracticePageBreakintotwo from "../../../Components/PDFDetails/PracticePageBreakintotwo";
+import PageBreak2PDF from "../../../Components/PDFDetails/PageBreak2PDF";
 
 const ConsultantSchedule = () => {
   const [consData, setConsData] = useState([]);
@@ -62,7 +63,7 @@ const ConsultantSchedule = () => {
     const key = uuidv4();
 
     // Create a PDF document as a Blob
-    const blob = await pdf(<PracticePageBreakintotwo data={data} />).toBlob();
+    const blob = await pdf(<PageBreak2PDF data={data} />).toBlob();
 
     // Create a Blob URL and open it in a new tab
     let url = URL.createObjectURL(blob);

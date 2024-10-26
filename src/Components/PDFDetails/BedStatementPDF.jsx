@@ -65,7 +65,7 @@ Font.register({
 
 // Reusable Page Component with Page Break Functionality
 const BedStatementPDF = ({ resultData}) => {
-  const pageHeightLimit = 2350; // Adjust this based on your requirements
+  const pageHeightLimit = 2150; // Adjust this based on your requirements
   let currentHeight = 0;
 
   const renderContentWithBreaks = () => {
@@ -98,10 +98,13 @@ const BedStatementPDF = ({ resultData}) => {
               >
                 {item?.["Patient Name"]}
               </Text>
-              <Text style={[styles.tableCell, { width: "20%" }]}>
+              <Text style={[styles.tableCell, { width: "15%" }]}>
                 {item?.["Ward Name"]}
               </Text>
-              <Text style={[styles.tableCell, { width: "15%" }]}>
+              <Text style={[styles.tableCell, { width: "10%" }]}>
+                {item?.["Bed No."]}
+              </Text>
+              <Text style={[styles.tableCell, { width: "10%" }]}>
                 {item?.["Ward Location"]}
               </Text>
               <Text
@@ -129,10 +132,13 @@ const BedStatementPDF = ({ resultData}) => {
               >
                 {item?.["Patient Name"]}
               </Text>
-              <Text style={[styles.tableCell, { width: "20%" }]}>
+              <Text style={[styles.tableCell, { width: "15%" }]}>
                 {item?.["Ward Name"]}
               </Text>
-              <Text style={[styles.tableCell, { width: "15%" }]}>
+              <Text style={[styles.tableCell, { width: "10%" }]}>
+                {item?.["Bed No."]}
+              </Text>
+              <Text style={[styles.tableCell, { width: "10%" }]}>
                 {item?.["Ward Location"]}
               </Text>
               <Text
@@ -232,7 +238,7 @@ const TableHeader = () => {
         <Text
           style={[
             styles.tableCell,
-            { width: "20%", borderTop: "1px solid black" },
+            { width: "15%", borderTop: "1px solid black" },
           ]}
         >
           Ward Name
@@ -240,7 +246,15 @@ const TableHeader = () => {
         <Text
           style={[
             styles.tableCell,
-            { width: "15%", borderTop: "1px solid black" },
+            { width: "10%", borderTop: "1px solid black" },
+          ]}
+        >
+          Bed No
+        </Text>
+        <Text
+          style={[
+            styles.tableCell,
+            { width: "10%", borderTop: "1px solid black" },
           ]}
         >
           Ward Location
@@ -313,13 +327,13 @@ const styles = StyleSheet.create({
   pageNumber: {
     left: 0,
     right: 0,
-    bottom: 10,
+    bottom: 8,
     position: "absolute",
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-around",
     width: "100%",
-    fontSize: "10",
+    fontSize: "8",
   },
   content: {
     flex: 1,
@@ -354,7 +368,7 @@ const styles = StyleSheet.create({
   footer: {
     left: 8,
     right: 0,
-    bottom: 30,
+    bottom: 20,
     position: "absolute",
     width: "100%",
     height: "2",
