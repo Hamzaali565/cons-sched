@@ -40,6 +40,12 @@ const Header = ({ onChange, inpShow = true, value = "" }) => {
   const navigateToSimpCalc = () => {
     navigate("/simpleCalculator"); // Directly passing the path
   };
+  const navigateToDVG = () => {
+    navigate("/dvago-rep"); // Directly passing the path
+  };
+  const navigateToDLY = () => {
+    navigate("/daily-rep"); // Directly passing the path
+  };
 
   const navigateToConsultant = () => {
     Swal.fire({
@@ -134,6 +140,8 @@ const Header = ({ onChange, inpShow = true, value = "" }) => {
           <ButtonDis title={"Setup"} onClick={navigateToConsultant} />
           <ButtonDis title={"Report"} onClick={navigateToReport} />
           <ButtonDis title={"GRN REP"} onClick={navigateToGRN} />
+          <ButtonDis title={"Dvago REP"} onClick={navigateToDVG} />
+          <ButtonDis title={"Daily Report"} onClick={navigateToDLY} />
         </div>
       ) : (
         <div className="flex justify-center space-x-5">
@@ -141,6 +149,7 @@ const Header = ({ onChange, inpShow = true, value = "" }) => {
           <ButtonDis title={"Calculator"} onClick={navigateToSimpCalc} />
           <ButtonDis title={"Welfare"} onClick={navigateToCalc} />
           <ButtonDis title={"Report"} onClick={navigateToReport} />
+          <ButtonDis title={"Dvago REP"} onClick={navigateToDVG} />
         </div>
       )}
     </div>

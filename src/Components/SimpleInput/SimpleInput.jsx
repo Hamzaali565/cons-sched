@@ -8,6 +8,7 @@ const SimpleInput = ({
   value,
   disabled,
   checked,
+  accept,
 }) => {
   return (
     <div>
@@ -23,6 +24,7 @@ const SimpleInput = ({
         disabled={disabled}
         id=""
         checked={checked}
+        accept={accept}
       />
     </div>
   );

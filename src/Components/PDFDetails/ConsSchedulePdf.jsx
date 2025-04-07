@@ -60,7 +60,7 @@ Font.register({
 const ConSchedulePDF = ({ consDetails }) => {
   console.log("ConstDetails", consDetails);
   const MyPage = ({ children }) => (
-    <Page size={[205, "auto"]} style={styles.page}>
+    <Page size={[220, "auto"]} style={styles.page}>
       <View style={styles.logoContainer}>
         <Image src={logo} style={styles.Image} />
       </View>
@@ -113,10 +113,21 @@ const ConSchedulePDF = ({ consDetails }) => {
                 <Text
                   style={[
                     styles.text,
-                    { fontFamily: "Roboto", fontWeight: "bold" },
+                    {
+                      fontFamily: "Roboto",
+                      fontWeight: "bold",
+                      fontSize: "9",
+                    },
                   ]}
                 >
-                  Status: {items?.onLeave === true ? "On-Leave" : "Available"}
+                  Status:{" "}
+                  {items?.onLeave === true
+                    ? `On-Leave ${
+                        items?.leaveDate !== "invalid date"
+                          ? `till ${items?.leaveDate}`
+                          : ""
+                      }`
+                    : "Available"}
                 </Text>
                 <Text style={styles.saperator}>
                   ____________________________________________________________

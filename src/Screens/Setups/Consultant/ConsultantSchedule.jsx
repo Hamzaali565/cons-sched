@@ -11,6 +11,8 @@ import ConsDisp from "../../../Components/ConsultantDisp/ConsDisp";
 import Header from "../../../Components/Header/Header";
 import PracticePageBreakintotwo from "../../../Components/PDFDetails/PracticePageBreakintotwo";
 import PageBreak2PDF from "../../../Components/PDFDetails/PageBreak2PDF";
+import * as XLSX from "xlsx";
+import { saveAs } from "file-saver";
 
 const ConsultantSchedule = () => {
   const [consData, setConsData] = useState([]);
@@ -20,6 +22,7 @@ const ConsultantSchedule = () => {
   const [searchValue, setSearchValue] = useState("");
 
   const url = useSelector((state) => state?.url);
+  const user_check = useSelector((state) => state.iAM);
 
   const updateCons = (data, value) => {
     setConsData([]);
@@ -72,11 +75,17 @@ const ConsultantSchedule = () => {
     setOpen(false);
   };
 
-  const getData = async () => {
+  const getData = async (value) => {
     setOpen(true);
     try {
       const response = await axios.get(`${url}/getconsultant`);
       let data = response.data.data;
+      console.log("value", value);
+
+      if (value === "download excel") {
+        return downloadExcelFile(response?.data?.data);
+      }
+
       const grouped = data.reduce((acc, curr) => {
         // Find if the group already exists for the speciality
         let group = acc.find(
@@ -107,13 +116,31 @@ const ConsultantSchedule = () => {
           });
         }
       });
-      // console.log("Data", sortedGrouped);
-      console.log(response.data.data);
+
       printResultToPdfPrac(grouped);
     } catch (error) {
       setOpen(false);
       console.log("error of get data", error);
     }
+  };
+
+  const downloadExcelFile = (data) => {
+    if (!data) return setOpen(false);
+
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+
+    // Convert to a Blob and download it
+    const excelBlob = XLSX.write(workbook, {
+      bookType: "xlsx",
+      type: "array",
+    });
+    const blob = new Blob([excelBlob], {
+      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    });
+    saveAs(blob, "data.xlsx");
+    setOpen(false);
   };
 
   return (
@@ -172,6 +199,12 @@ const ConsultantSchedule = () => {
 
         <div className="flex justify-center mt-5 space-x-3">
           <ButtonDis title={"Print Detail"} onClick={getData} />
+          {user_check === "itadm" && (
+            <ButtonDis
+              title={"Download Excel"}
+              onClick={() => getData("download excel")}
+            />
+          )}
           <ButtonDis title={"Refereh"} onClick={resetData} />
         </div>
       </div>

@@ -18,6 +18,8 @@ import { setUser } from "./Store/action";
 import MealReport from "./Screens/Setups/MealReport/MealReport";
 import ExcelToJson from "./Screens/Setups/ExcelToJson";
 import EXToJson from "./Screens/Setups/EXToJson";
+import DvagoRep from "./Screens/Setups/DvagoRep/DvagoRep";
+import DailyRep from "./Screens/Setups/DailyReport/DailyRep";
 
 function App() {
   const [refreshPage, setRefreshPage] = useState(false);
@@ -86,10 +88,13 @@ function App() {
             <Route path="/simpleCalculator" element={<SimpleCalc />} />
             <Route path="/simpleCalculator" element={<SimpleCalc />} />
             <Route path="/mealReport" element={<MealReport />} />
+            <Route path="/dvago-rep" element={<DvagoRep />} />
+            <Route path="/daily-rep" element={<DailyRep />} />
             <Route path="*" element={<Navigate to="/home" replace={true} />} />
           </Routes>
         ) : user_check === "itadm" ? (
           <Routes>
+            <Route path="/daily-rep" element={<DailyRep />} />
             <Route path="/home" element={<ConsultantSchedule />} />
             <Route path="/consultantSetup" element={<Consultant />} />
             <Route path="/formsIT" element={<Forms />} />
@@ -97,7 +102,11 @@ function App() {
             <Route path="/simpleCalculator" element={<SimpleCalc />} />
             <Route path="/mealReport" element={<MealReport />} />
             <Route path="/grnReport" element={<ExcelToJson />} />
-            <Route path="*" element={<Navigate to="/home" replace={true} />} />
+            <Route path="/dvago-rep" element={<DvagoRep />} />
+            <Route
+              path="*"
+              element={<Navigate to="/daily-rep" replace={true} />}
+            />
           </Routes>
         ) : null}
       </div>

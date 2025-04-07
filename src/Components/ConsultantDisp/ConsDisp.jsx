@@ -5,6 +5,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import Loader from "../Modal/Loader";
 import Header from "../Header/Header";
+import moment from "moment";
 
 const ConsDisp = ({ All = "", onClickCons, onClickSpec, value }) => {
   const [open, setOpen] = useState(false);
@@ -32,7 +33,7 @@ const ConsDisp = ({ All = "", onClickCons, onClickSpec, value }) => {
     try {
       setLoaderTog(true);
 
-      const response = await axios.get(`${url}/getconsultant?All=${All}`, {
+      let response = await axios.get(`${url}/getconsultant?All=${All}`, {
         withCredentials: true,
       });
       response?.data?.data.sort((a, b) => {
@@ -46,9 +47,34 @@ const ConsDisp = ({ All = "", onClickCons, onClickSpec, value }) => {
         }
         return 0;
       });
+      console.log("here", response);
+      const currentDay = moment().format("dddd").toUpperCase();
+      response = response?.data?.data.map((items) => {
+        if (items?.specificDay === currentDay) {
+          if (items?.specificType === true) {
+            return {
+              ...items,
+              roomNo:
+                !items?.specificRoom || items?.specificRoom !== ""
+                  ? items?.specificRoom
+                  : items?.roomNo,
+              appointmentFee:
+                !items?.specificCharges || items?.specificCharges !== 0
+                  ? items?.specificCharges
+                  : items?.appointmentFee,
+            };
+          }
+        }
+        return items;
+      });
+
+      // console.log("responses", responses);
+
+      console.log(currentDay);
       setLoaderTog(false);
-      setData(response.data.data);
-      setCopyData(response.data.data);
+      setData(response);
+
+      setCopyData(response);
     } catch (error) {
       console.log("error of get data", error);
       setLoaderTog(false);
