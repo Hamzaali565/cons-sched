@@ -20,6 +20,7 @@ import ExcelToJson from "./Screens/Setups/ExcelToJson";
 import EXToJson from "./Screens/Setups/EXToJson";
 import DvagoRep from "./Screens/Setups/DvagoRep/DvagoRep";
 import DailyRep from "./Screens/Setups/DailyReport/DailyRep";
+import DailyReportAll from "./Screens/Setups/DailyReport/DailyReportAll";
 
 function App() {
   const [refreshPage, setRefreshPage] = useState(false);
@@ -103,6 +104,7 @@ function App() {
             <Route path="/mealReport" element={<MealReport />} />
             <Route path="/grnReport" element={<ExcelToJson />} />
             <Route path="/dvago-rep" element={<DvagoRep />} />
+            <Route path="/daily-rep-all" element={<DailyReportAll />} />
             <Route
               path="*"
               element={<Navigate to="/daily-rep" replace={true} />}

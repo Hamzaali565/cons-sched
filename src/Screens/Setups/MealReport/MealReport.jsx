@@ -16,6 +16,7 @@ import LabReportPDf from "../../../Components/PDFDetails/LabReportPDF";
 import CheckBoxInput from "../../../Components/CheckBoxInput.jsx/CheckBoxInput";
 import { ErrorAlert } from "../../../Components/Alert/Alert";
 import moment from "moment";
+import Myheader from "../../../Components/New Header/newHeader";
 function MealReport() {
   const [time, setTime] = useState("");
   const [time1, setTime1] = useState("");
@@ -290,7 +291,8 @@ function MealReport() {
   };
   return (
     <div>
-      <Header inpShow={false} />
+      {/* <Header inpShow={false} /> */}
+      <Myheader />
       <div>
         {/* <h1>Upload Excel and Download as JSON</h1> */}
         {/* File upload input */}

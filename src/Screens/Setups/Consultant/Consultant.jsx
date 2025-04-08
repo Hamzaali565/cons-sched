@@ -12,6 +12,7 @@ import Header from "../../../Components/Header/Header";
 import moment from "moment";
 import VideoModal from "../../../Components/Modal/VideoModal";
 import LabelledDropDown from "../../../Components/LabelledDropDown/LabelledDropDown";
+import Myheader from "../../../Components/New Header/newHeader";
 
 const Consultant = () => {
   const [name, setName] = useState("");
@@ -399,7 +400,8 @@ const Consultant = () => {
   };
   return (
     <div>
-      <Header inpShow={false} />
+      {/* <Header inpShow={false} /> */}
+      <Myheader />
       <div className="bg-white bg-opacity-10 backdrop-blur-lg border border-white border-opacity-30 shadow-lg my-4 mx-4  p-3 rounded-3xl">
         <CenterHeading title={"Consultant"} />
         <div className="flex justify-center my-4 space-x-2">

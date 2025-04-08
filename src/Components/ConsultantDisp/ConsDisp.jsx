@@ -114,9 +114,10 @@ const ConsDisp = ({ All = "", onClickCons, onClickSpec, value }) => {
   };
 
   return (
-    <div className="bg-white bg-opacity-10 backdrop-blur-lg border border-white border-opacity-30 shadow-lg mx-4 rounded-3xl">
-      <div className="container mx-auto ">
-        <div className="grid grid-cols-8 text-xs font-bold justify-items-center items-center h-10 border border-gray-300">
+    <div className="bg-white bg-opacity-10 backdrop-blur-lg border border-black border-opacity-30 shadow-lg mx-4 rounded-3xl overflow-hidden">
+      {/* header */}
+      <div className="w-full">
+        <div className="grid grid-cols-8 text-xs font-bold place-items-center text-center h-10 border-b border-gray-300 bg-white bg-opacity-30 backdrop-blur-sm">
           <p>Consultant Name</p>
           <p>Speciality</p>
           <p>Days</p>
@@ -124,47 +125,45 @@ const ConsDisp = ({ All = "", onClickCons, onClickSpec, value }) => {
           <p>Room No</p>
           <p>Appointment Fee</p>
           <p>Ext. no</p>
-          <p>onleave</p>
+          <p>On Leave</p>
         </div>
       </div>
-      <div
-        style={{ height: "700px" }}
-        className="overflow-auto border border-gray-300 hide-scrollbar"
-      >
+
+      {/* data rows */}
+      <div style={{ height: "700px" }} className="overflow-auto hide-scrollbar">
         {data.length > 0 &&
           data?.map((items, index) => (
             <div
-              className="container mx-auto hover:font-bold hover:text-blue-800 cursor-pointer transform transition-transform duration-300 hover:scale-105"
+              className="grid grid-cols-8 p-1 text-xs text-center hover:text-white items-center border-b border-gray-500 font-bold hover:bg-blue-500 cursor-pointer transform transition-transform duration-200]"
               key={index}
             >
-              <div className="grid grid-cols-8 p-1 font-bold text-xs text-center items-center  border-b-2 border-gray-300 ">
-                <p
-                  onClick={() => sendData(items, "consultant")}
-                  className="text-left"
-                >
-                  {items?.name}
-                </p>
-                <p onClick={() => sendData(items?.speciality, "speciality")}>
-                  {items?.speciality}
-                </p>
-                <div>
-                  <p>{items?.days}</p>
-                  {items?.days1 && <p>{items?.days1}</p>}
-                  {items?.days2 && <p>{items?.days2}</p>}
-                </div>
-                <div>
-                  <p>{items?.timing}</p>
-                  {items?.timing1 && <p>{items?.timing1}</p>}
-                  {items?.timing2 && <p>{items?.timing2}</p>}
-                </div>
-                <p>{items?.roomNo}</p>
-                <p>{items?.appointmentFee}</p>
-                <p>{items?.welfareFee}</p>
-                <p>{items?.onLeave === true ? "On-Leave" : "Available"}</p>
+              <p
+                onClick={() => sendData(items, "consultant")}
+                className="text-left"
+              >
+                {items?.name}
+              </p>
+              <p onClick={() => sendData(items?.speciality, "speciality")}>
+                {items?.speciality}
+              </p>
+              <div>
+                <p>{items?.days}</p>
+                {items?.days1 && <p>{items?.days1}</p>}
+                {items?.days2 && <p>{items?.days2}</p>}
               </div>
+              <div>
+                <p>{items?.timing}</p>
+                {items?.timing1 && <p>{items?.timing1}</p>}
+                {items?.timing2 && <p>{items?.timing2}</p>}
+              </div>
+              <p>{items?.roomNo}</p>
+              <p>{items?.appointmentFee}</p>
+              <p>{items?.welfareFee}</p>
+              <p>{items?.onLeave === true ? "On-Leave" : "Available"}</p>
             </div>
           ))}
       </div>
+
       <Loader onClick={loaderTog} title={"Please Wait..."} />
     </div>
   );

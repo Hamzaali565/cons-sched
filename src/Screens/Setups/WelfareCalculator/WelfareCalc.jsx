@@ -4,6 +4,7 @@ import LabeledInput from "../../../Components/LabelledInput/LabeledInput";
 import ButtonDis from "../../../Components/Button/ButtonDis";
 import { ErrorAlert } from "../../../Components/Alert/Alert";
 import CenterHeading from "../../../Components/Center Heading/CenterHeading";
+import Myheader from "../../../Components/New Header/newHeader";
 
 const WelfareCalc = () => {
   const [medicine, setMedicine] = useState(0);
@@ -121,7 +122,8 @@ const WelfareCalc = () => {
 
   return (
     <div>
-      <Header inpShow={false} />
+      {/* <Header inpShow={false} /> */}
+      <Myheader />
 
       <div className="flex flex-col items-center mt-4 space-y-4">
         <LabeledInput

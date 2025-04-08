@@ -13,6 +13,9 @@ import PracticePageBreakintotwo from "../../../Components/PDFDetails/PracticePag
 import PageBreak2PDF from "../../../Components/PDFDetails/PageBreak2PDF";
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
+import Myheader from "../../../Components/New Header/newHeader";
+import CenterHeading from "../../../Components/Center Heading/CenterHeading";
+import SimpleInput from "../../../Components/SimpleInput/SimpleInput";
 
 const ConsultantSchedule = () => {
   const [consData, setConsData] = useState([]);
@@ -145,8 +148,18 @@ const ConsultantSchedule = () => {
 
   return (
     <div>
-      <Header onChange={(e) => setSearchValue(e)} />
-      <div className=" mx-4 p-3">
+      {/* <Header onChange={(e) => setSearchValue(e)} /> */}
+      <Myheader />
+      <div className=" mx-4 p-3 relative">
+        <div className="flex space-x-4 justify-center ">
+          <CenterHeading title={"FIND CONSULTANT"} />
+          <div className="flex justify-center my-3">
+            <SimpleInput
+              placeholder={"Consultant / Speciality"}
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
+          </div>
+        </div>
         {/* <div className="flex items-center flex-col space-y-2 mt-3">
           <SpecialityModal
             title={"Search With Speciality"}
@@ -161,8 +174,8 @@ const ConsultantSchedule = () => {
             />
           )}
         </div> */}
-        {consData.length > 0 && (
-          <div className="container mx-auto mt-3">
+        {/* {consData.length > 0 && (
+          <div className="container mx-auto mt-3 absolute">
             <div className="mt-3 grid grid-cols-7 text-xs font-bold justify-items-center items-center h-16 border border-gray-300">
               <p>Consultant Name</p>
               <p>Speciality</p>
@@ -188,7 +201,7 @@ const ConsultantSchedule = () => {
                 </div>
               ))}
           </div>
-        )}
+        )} */}
         {consData.length <= 0 && (
           <ConsDisp
             onClickCons={printCons}

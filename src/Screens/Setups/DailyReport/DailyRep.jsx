@@ -12,6 +12,7 @@ import CenterHeading from "../../../Components/Center Heading/CenterHeading";
 import { useSelector } from "react-redux";
 import { ErrorAlert, SuccessAlert } from "../../../Components/Alert/Alert";
 import axios from "axios";
+import Myheader from "../../../Components/New Header/newHeader";
 
 const DailyRep = () => {
   const [open, setOpen] = useState(false);
@@ -116,6 +117,7 @@ const DailyRep = () => {
     { upload: 0, name: "Lab Revenue Statement Month" },
     { upload: 0, name: "Test Tracking Status" },
     { upload: 0, name: "List Of Bills (IPD) (Summary)" },
+    { upload: 0, name: "Prev Admissions" },
   ]);
 
   useEffect(() => {
@@ -1622,11 +1624,6 @@ const DailyRep = () => {
     }
   };
   const printDReportPDF = async () => {
-    const myData = uploadedReports.find((items) => items?.upload === 0);
-    if (myData) {
-      ErrorAlert({ text: `File ${myData.name} is missing !!!` });
-      return;
-    }
     const key = uuidv4();
 
     // Create a PDF document as a Blob
@@ -1641,10 +1638,37 @@ const DailyRep = () => {
   const handleInputChange = (value, key) => {
     setReportData((prev) => ({
       ...prev,
-      [key]: value,
+      [key]: +value,
     }));
+    if (key === "prevAdmission") {
+      if (+value > 0) {
+        setUploadedReports((prev) =>
+          prev.map((item) =>
+            item.name === "Prev Admissions" ? { ...item, upload: 1 } : item
+          )
+        );
+        return;
+      } else {
+        setUploadedReports((prev) =>
+          prev.map((item) =>
+            item.name === "Prev Admissions" ? { ...item, upload: 0 } : item
+          )
+        );
+      }
+    }
   };
-
+  const validationCheck = (title) => {
+    const myData = uploadedReports.find((items) => items?.upload === 0);
+    if (myData) {
+      ErrorAlert({ text: `${myData.name} is missing !!!` });
+      return;
+    }
+    if (title === "Save") {
+      saveData();
+    } else {
+      printDReportPDF();
+    }
+  };
   const saveData = async () => {
     try {
       const response = await axios.post(`${url}/daily_report`, {
@@ -1673,13 +1697,15 @@ const DailyRep = () => {
   return (
     <div>
       <div>
-        <Header inpShow={false} />
+        {/* <Header inpShow={false} /> */}
+        <Myheader />
       </div>
       <div>
         {/* Admission Wise */}
         <div className="flex justify-center mt-4 items-center space-x-4">
           <label htmlFor="" className="underline font-bold">
-            Admission Wise:
+            Admission Wise till{" "}
+            {moment().subtract(1, "days").format("DD/MM/YYYY")}:
           </label>
           <input
             type="file"
@@ -2082,8 +2108,8 @@ const DailyRep = () => {
       )}
 
       <div className="flex justify-center mt-3 space-x-4  ">
-        <ButtonDis onClick={saveData} title={"Save"} />
-        <ButtonDis onClick={printDReportPDF} title={"Preview"} />
+        <ButtonDis onClick={() => validationCheck("Save")} title={"Save"} />
+        <ButtonDis onClick={validationCheck} title={"Preview"} />
         <ButtonDis
           onClick={() => setToggle(!toggle)}
           title={"Revenue Breakup"}

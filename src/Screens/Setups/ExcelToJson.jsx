@@ -11,6 +11,7 @@ import Header from "../../Components/Header/Header";
 import GRNReportPDFNew from "../../Components/PDFDetails/GRNReportPDFNew";
 import GRNReportSummaryPDF from "../../Components/PDFDetails/GRNReportSummaryPDF";
 import LabelledDropDown from "../../Components/LabelledDropDown/LabelledDropDown";
+import Myheader from "../../Components/New Header/newHeader";
 function ExcelToJson() {
   const [jsonData, setJsonData] = useState(null);
   const [category, setCategory] = useState([]);
@@ -110,7 +111,7 @@ function ExcelToJson() {
   };
 
   const SummaryReport = () => {
-    setOpen(true)
+    setOpen(true);
     const filterJson = jsonData.filter((items) => items?.["Deleted"] !== true);
     console.log("Filtered Json", filterJson);
     // Step 2: Count occurrences of each supplier
@@ -209,7 +210,8 @@ function ExcelToJson() {
 
   return (
     <div>
-      <Header inpShow={false} />
+      {/* <Header inpShow={false} /> */}
+      <Myheader />
       {/* File upload input */}
       <div className="flex justify-center mt-4">
         <input

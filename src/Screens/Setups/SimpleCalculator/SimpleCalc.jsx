@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./home.css";
 import Header from "../../../Components/Header/Header";
+import Myheader from "../../../Components/New Header/newHeader";
 
 const SimpleCalc = () => {
   const [input, setInput] = useState("");
@@ -93,7 +94,8 @@ const SimpleCalc = () => {
 
   return (
     <div>
-      <Header inpShow={false} />
+      {/* <Header inpShow={false} /> */}
+      <Myheader />
       <div className="body">
         <div className="calculator">
           <div className="container">

@@ -3,6 +3,7 @@ import Header from "../../../Components/Header/Header";
 import * as XLSX from "xlsx";
 import ButtonDis from "../../../Components/Button/ButtonDis";
 import { saveAs } from "file-saver";
+import Myheader from "../../../Components/New Header/newHeader";
 
 const DvagoRep = () => {
   const [open, setOpen] = useState(false);
@@ -404,7 +405,8 @@ const DvagoRep = () => {
 
   return (
     <div>
-      <Header inpShow={false} />
+      {/* <Header inpShow={false} /> */}
+      <Myheader />
       <div>
         <div className="flex justify-center mt-4 items-center space-x-4">
           <label htmlFor="" className="underline font-bold">

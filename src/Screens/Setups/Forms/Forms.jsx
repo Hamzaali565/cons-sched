@@ -14,6 +14,7 @@ import SMSMarketingPDF from "../../../Components/PDFDetails/SMSMarketingPDF";
 import PanelFormPDF from "../../../Components/PDFDetails/PanelFormPDF";
 import CCTVFormPDF from "../../../Components/PDFDetails/CCTVFormPDF";
 import RehiringPdf from "../../../Components/PDFDetails/RehiringPdf";
+import Myheader from "../../../Components/New Header/newHeader";
 const Forms = () => {
   const [selectedValue, setSelectedValue] = React.useState("");
   const [toggle, setToggle] = useState(false);
@@ -129,7 +130,8 @@ const Forms = () => {
 
   return (
     <div>
-      <Header inpShow={false} />
+      {/* <Header inpShow={false} /> */}
+      <Myheader />
 
       <div className="mt-4">
         <SimpleDropDown
