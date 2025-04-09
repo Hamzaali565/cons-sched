@@ -24,6 +24,7 @@ const DailyRep = () => {
   const [ipdRefund, setIPDRefund] = useState(null);
   const [otAdm, setOtAdm] = useState(null);
   const [toggle, setToggle] = useState(false);
+  const [prevAdm, setPrevAdm] = useState(false);
   const [reportData, setReportData] = useState({
     opdCountPvt: 0,
     opdCountPanel: 0,
@@ -121,9 +122,8 @@ const DailyRep = () => {
   ]);
 
   useEffect(() => {
-    console.log(reportData);
-    console.log("uploadedReports", uploadedReports);
-  }, [reportData]);
+    getPrevAdmissions();
+  }, []);
 
   const url = useSelector((item) => item.url);
 
@@ -918,7 +918,10 @@ const DailyRep = () => {
             ])
           );
         });
-
+        JSONDATA = JSONDATA.map((items) => ({
+          ...items,
+          "Gross Amount": +items["Sale Rate"] * +items["Qty"],
+        }));
         let latestData = JSONDATA.filter(
           (item) =>
             moment(item["Issuance Date"], "DD/MM/YYYY HH:mm:ss").format(
@@ -927,11 +930,17 @@ const DailyRep = () => {
         );
 
         let dvagoSaleDay = latestData.reduce(
-          (a, b) => a + parseInt(b["Net Amount"]),
+          (a, b) => a + +b["Gross Amount"],
           0
         );
 
-        let dvagoSaleMonth = JSONDATA.reduce((a, b) => a + +b["Net Amount"], 0);
+        dvagoSaleDay = Math.floor(dvagoSaleDay);
+
+        let dvagoSaleMonth = JSONDATA.reduce(
+          (a, b) => a + +b["Gross Amount"],
+          0
+        );
+        dvagoSaleMonth = Math.floor(dvagoSaleMonth);
         setReportData((prev) => ({
           ...prev,
           dvagoSaleDay: dvagoSaleDay - prev.dvagoRefundDay,
@@ -1011,7 +1020,7 @@ const DailyRep = () => {
         );
 
         let refundDayOne = latestData.reduce(
-          (a, b) => a + parseInt(b["Gross Amount"]),
+          (a, b) => a + b["Gross Amount"],
           0
         );
 
@@ -1078,14 +1087,12 @@ const DailyRep = () => {
             ])
           );
         });
-        console.log("JSONDATA.length", JSONDATA);
         JSONDATA = JSONDATA.filter((items) =>
           items["Issuance No."].includes("MDP/")
         );
-        console.log("JSONDATA.length", JSONDATA.length);
         JSONDATA = JSONDATA.map((items) => ({
           ...items,
-          "Gross Amount": items["Sale Rate"] * items["Qty"],
+          "Gross Amount": +items["Sale Rate"] * +items["Qty"],
         }));
 
         let latestData = JSONDATA.filter(
@@ -1095,17 +1102,14 @@ const DailyRep = () => {
             ) === moment().subtract(1, "days").format("DD/MM/YYYY")
         );
 
-        console.log(latestData);
-
         let ipdSaleDay = Math.ceil(
-          latestData.reduce((a, b) => a + parseInt(b["Gross Amount"]), 0)
+          latestData.reduce((a, b) => a + +b["Gross Amount"], 0)
         );
-        console.log("ipdSaleDay", ipdSaleDay);
 
         let ipdSaleMonth = Math.ceil(
           JSONDATA.reduce((a, b) => a + +b["Gross Amount"], 0)
         );
-        console.log("ipdSaleMonth", ipdSaleMonth);
+
         setReportData((prev) => ({
           ...prev,
           ipdSaleDay: ipdSaleDay - prev.ipdRefundDay,
@@ -1657,6 +1661,24 @@ const DailyRep = () => {
       }
     }
   };
+  const getPrevAdmissions = async () => {
+    try {
+      const response = await axios.get(
+        `${url}/daily_report_title?title=${moment()
+          .subtract(2, "days")
+          .format("DD/MM/YYYY")}`
+      );
+      let adms = response.data?.data?.data?.data?.prevAdmission;
+      setReportData((prev) => ({
+        ...prev,
+        prevAdmission: adms,
+      }));
+      setPrevAdm(true);
+    } catch (error) {
+      console.log("Error =>", error);
+      setPrevAdm(false);
+    }
+  };
   const validationCheck = (title) => {
     const myData = uploadedReports.find((items) => items?.upload === 0);
     if (myData) {
@@ -1961,6 +1983,9 @@ const DailyRep = () => {
             label={"Previous Admissions One Time"}
             placeholder={"Previous Admissions"}
             onChange={(e) => handleInputChange(e.target.value, "prevAdmission")}
+            disabled={prevAdm}
+            value={reportData?.prevAdmission}
+            type={"Number"}
           />
         </div>
       </div>
